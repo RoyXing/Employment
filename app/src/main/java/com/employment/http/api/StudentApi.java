@@ -1,0 +1,34 @@
+package com.employment.http.api;
+
+import com.employment.http.bean.ResponseBean;
+import com.employment.model.student.bean.Recruit;
+import com.employment.model.student.bean.StudentInfo;
+
+import java.util.HashMap;
+import java.util.List;
+
+import io.reactivex.Observable;
+import retrofit2.http.FieldMap;
+import retrofit2.http.GET;
+import retrofit2.http.HeaderMap;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
+
+/**
+ * Created by roy on 2017/4/7.
+ */
+
+public interface StudentApi {
+
+
+    @POST("login/login")
+    Observable<StudentInfo> studentLoginFetchInfo(@QueryMap HashMap<String, String> map);
+
+    @GET("recruit/findRecruits")
+    Observable<List<Recruit>> findRecruits(@Query("type") String type);
+
+    @POST("student/deliverResume")
+    Observable<ResponseBean> applyResume(@QueryMap HashMap<String, String> map);
+}

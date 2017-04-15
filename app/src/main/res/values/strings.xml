@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2015 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">Cheesesquare</string>
+
+    <string name="cheese_ipsum">Jarlsberg lancashire edam. Dolcelatte hard cheese brie st. agur blue
+    cheese caerphilly bavarian bergkase cheese and biscuits mascarpone. Cheeseburger swiss bavarian
+    bergkase cream cheese fromage frais cheesy feet port-salut airedale. St. agur blue cheese rubber
+    cheese caerphilly cheddar cheesecake cream cheese manchego lancashire. Roquefort squirty cheese
+    the big cheese.</string>
+    <string name="checkin">Checkin</string>
+
+    <string name="menu_night_mode">Night mode</string>
+    <string name="menu_night_mode_system">Follow system</string>
+    <string name="menu_night_mode_day">Day (always)</string>
+    <string name="menu_night_mode_night">Night (always)</string>
+    <string name="menu_night_mode_auto">Auto</string>
+
+    <string name="press_again_exit">再按一次退出</string>
+    <string name="employment_info">招聘信息</string>
+    <string name="company_info">企业信息</string>
+    <string name="personal_info">个人信息</string>
+    <string name="community">社区</string>
+    <string name="note">笔记本</string>
+    <string name="logout">注销</string>
+
+    <string name="drawer_open">打开</string>
+    <string name="drawer_close">关闭</string>
+    <string name="account">帐号</string>
+    <string name="password">密码</string>
+    <string name="sign_in">登录</string>
+    <string name="register">注册</string>
+    <string name="check_info">查询专业</string>
+    <string name="modify_company_info">企业信息</string>
+    <string name="publish_info">发布招聘</string>
+    <string name="check_resume">查看简历</string>
+    <string name="admin_home"><![CDATA[ 就业状况]]></string>
+    <string name="admin_recruitment">招聘信息审核</string>
+    <string name="admin_post"><![CDATA[ 帖子审核]]></string>
+
+</resources>
