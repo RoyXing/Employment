@@ -32,19 +32,19 @@
                 android:id="@+id/employment_salary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/employment_type"
+               android:layout_alignParentRight="true"
                 android:text="5000/"
                 android:textColor="@color/red"
                 android:textSize="16sp" />
 
-            <TextView
+ <!--           <TextView
                 android:id="@+id/employment_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:text="校招"
                 android:textColor="@color/red"
-                android:textSize="16sp" />
+                android:textSize="16sp" />-->
 
         </RelativeLayout>
 

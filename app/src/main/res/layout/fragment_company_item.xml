@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/card_margin"
+    android:background="@color/color_white">
+
+
+    <LinearLayout
+        android:id="@+id/company_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:id="@+id/company_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="Android"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/company_company_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="江苏云学堂网络科技有限公司"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/company_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:text="苏州创业园"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/company_resume_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="11111111" />
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

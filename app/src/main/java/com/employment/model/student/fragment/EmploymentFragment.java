@@ -1,6 +1,8 @@
 package com.employment.model.student.fragment;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -51,7 +53,6 @@ public class EmploymentFragment extends BaseFragment<EmploymentPresenter> implem
         employmentRecyclerView.setLayoutManager(linearLayoutManager);
         adapter = new EmploymentAdapter(mActivity, new ArrayList<Recruit>());
         employmentRecyclerView.setAdapter(adapter);
-        mPresenter.loadEmploymentInfo(type);
         adapter.setOnclickListener(this);
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -75,6 +76,11 @@ public class EmploymentFragment extends BaseFragment<EmploymentPresenter> implem
         });
     }
 
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        mPresenter.loadEmploymentInfo(type);
+    }
 
     @Override
     public void showContent(List<Recruit> recruits) {

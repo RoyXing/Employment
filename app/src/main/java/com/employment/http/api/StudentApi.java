@@ -2,6 +2,7 @@ package com.employment.http.api;
 
 import com.employment.http.bean.ResponseBean;
 import com.employment.model.student.bean.Recruit;
+import com.employment.model.student.bean.Resume;
 import com.employment.model.student.bean.StudentInfo;
 
 import java.util.HashMap;
@@ -31,4 +32,7 @@ public interface StudentApi {
 
     @POST("student/deliverResume")
     Observable<ResponseBean> applyResume(@QueryMap HashMap<String, String> map);
+
+    @GET("student/getStudentRecruit")
+    Observable<List<Resume>> getResumeInfo(@Query("studentId") String studentId);
 }

@@ -11,30 +11,28 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.employment.R;
-import com.employment.model.admin.fragment.CheckPostFragment;
-import com.employment.model.admin.fragment.CheckRecruitmentFragment;
-import com.employment.model.admin.fragment.HomeFragment;
 import com.employment.app.App;
 import com.employment.app.Constants;
 import com.employment.base.BaseActivity;
+import com.employment.model.admin.fragment.CheckPostFragment;
+import com.employment.model.admin.fragment.CheckRecruitmentFragment;
+import com.employment.model.admin.fragment.HomeFragment;
 import com.employment.model.company.fragment.CheckFragment;
 import com.employment.model.company.fragment.CheckResumeFragment;
+import com.employment.model.company.fragment.CompanyInfoFragment;
+import com.employment.model.company.fragment.PublishFragment;
 import com.employment.model.student.bean.StudentInfo;
-import com.employment.model.student.fragment.EmploymentHome;
-import com.employment.presenter.MainPresenter;
-import com.employment.presenter.contract.MainContract;
 import com.employment.model.student.fragment.CommunityFragment;
 import com.employment.model.student.fragment.CompanyFragment;
-import com.employment.model.company.fragment.CompanyInfoFragment;
-import com.employment.model.student.fragment.EmploymentFragment;
+import com.employment.model.student.fragment.EmploymentHome;
 import com.employment.model.student.fragment.NoteFragment;
 import com.employment.model.student.fragment.PersonalFragment;
-import com.employment.model.company.fragment.PublishFragment;
+import com.employment.presenter.MainPresenter;
+import com.employment.presenter.contract.MainContract;
 import com.employment.utils.SharedPreferenceUtil;
 
 import javax.inject.Inject;
@@ -95,7 +93,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     protected void onStart() {
         super.onStart();
-
         if (SharedPreferenceUtil.getUserStatud() == 2) {
             hideFragment = Constants.TYPE_RECRUITMENT;
             showFragment = Constants.TYPE_RECRUITMENT;
@@ -176,7 +173,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             Glide.with(this).load(studentInfo.getSface()).into(imageView);
             textView.setText(studentInfo.getSname());
         }
-
     }
 
     @Override
@@ -304,6 +300,4 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     public void showError(String msg) {
 
     }
-
-
 }

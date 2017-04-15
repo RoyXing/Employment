@@ -13,7 +13,6 @@ import com.employment.di.module.FragmentModule;
 import com.employment.di.scope.FragmentScope;
 import com.employment.model.student.fragment.CommunityFragment;
 import com.employment.model.student.fragment.CompanyFragment;
-import com.employment.model.student.fragment.EmploymentDetails;
 import com.employment.model.student.fragment.EmploymentFragment;
 import com.employment.model.student.fragment.NoteFragment;
 import com.employment.model.student.fragment.PersonalFragment;

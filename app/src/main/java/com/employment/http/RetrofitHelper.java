@@ -8,6 +8,7 @@ import com.employment.http.api.CompanyApi;
 import com.employment.http.api.StudentApi;
 import com.employment.http.bean.WelcomeBean;
 import com.employment.model.student.bean.Recruit;
+import com.employment.model.student.bean.Resume;
 import com.employment.model.student.bean.StudentInfo;
 
 import java.util.HashMap;
@@ -55,5 +56,9 @@ public class RetrofitHelper {
 
     public Observable<ResponseBean> applyResume(HashMap<String, String> map) {
         return studentApi.applyResume(map);
+    }
+
+    public Observable<List<Resume>> getResumeInfo(String studentId) {
+        return studentApi.getResumeInfo(studentId);
     }
 }

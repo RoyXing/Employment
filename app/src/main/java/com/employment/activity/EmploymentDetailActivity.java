@@ -11,9 +11,12 @@ import com.bumptech.glide.Glide;
 import com.employment.R;
 import com.employment.base.BaseActivity;
 import com.employment.model.student.bean.Recruit;
+import com.employment.model.student.bean.Resume;
 import com.employment.presenter.EmploymentDetailsPresenter;
 import com.employment.presenter.contract.EmploymentDetailContract;
 import com.employment.utils.SystemUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -21,6 +24,7 @@ public class EmploymentDetailActivity extends BaseActivity<EmploymentDetailsPres
         EmploymentDetailContract.View, View.OnClickListener {
 
     public static final String ARG_NUMBER = "arg_number";
+    public static final String CHECK_INFO = "check_info";
 
     @BindView(R.id.company_detail_image)
     ImageView companyDetailImage;
@@ -46,6 +50,7 @@ public class EmploymentDetailActivity extends BaseActivity<EmploymentDetailsPres
     FloatingActionButton floatingActionButton;
 
     private Recruit recruit;
+    private int checkInfo;
 
     @Override
     protected void initInject() {
@@ -60,6 +65,9 @@ public class EmploymentDetailActivity extends BaseActivity<EmploymentDetailsPres
     @Override
     protected void initEventAndData() {
         recruit = (Recruit) getIntent().getSerializableExtra(ARG_NUMBER);
+        checkInfo = getIntent().getIntExtra(CHECK_INFO, 0);
+        if (checkInfo == 1)
+            floatingActionButton.setVisibility(View.GONE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -82,11 +90,25 @@ public class EmploymentDetailActivity extends BaseActivity<EmploymentDetailsPres
 
     @Override
     public void onClick(View view) {
-        mPresenter.applyResume(recruit.getRid(), 0);
+        mPresenter.isApply();
     }
 
     @Override
     public void applyOk() {
         SystemUtils.showToast(this, "投递成功，请等待回复");
+    }
+
+    @Override
+    public void isCanApply(List<Resume> resumes) {
+        boolean isCanApply = true;
+        for (Resume resume : resumes) {
+            if (resume.getCmRecruitByRid().getRid() == recruit.getRid()) {
+                isCanApply = false;
+            }
+        }
+        if (isCanApply)
+            mPresenter.applyResume(recruit.getRid(), 0);
+        else
+            SystemUtils.showToast(this, "已经投递，请去面试管理查看状态");
     }
 }

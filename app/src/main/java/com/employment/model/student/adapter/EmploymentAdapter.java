@@ -49,13 +49,9 @@ public class EmploymentAdapter extends RecyclerView.Adapter<EmploymentAdapter.My
 
         Recruit recruit = recruits.get(position);
         holder.employmentPosition.setText(recruit.getCmJobByJid().getJname());
-        if (recruit.getRtype() == 1)
-            holder.employmentType.setText("校招");
-        else if (recruit.getRtype() == 0)
-            holder.employmentType.setText("直聘");
         holder.employmentCompanyName.setText(recruit.getCmCompanyByCid().getCname() + "");
         holder.employmentAddress.setText(recruit.getCmCompanyByCid().getCaddress() + "");
-        holder.employmentSalary.setText(recruit.getRsalary() + "元/");
+        holder.employmentSalary.setText(recruit.getRsalary() + "元");
         Glide.with(mContext).load(recruit.getCmCompanyByCid().getCface()).into(holder.companyChrImage);
         holder.companyChrName.setText(recruit.getCmCompanyByCid().getChr());
         holder.employmentLayout.setOnClickListener(new View.OnClickListener() {
@@ -79,8 +75,6 @@ public class EmploymentAdapter extends RecyclerView.Adapter<EmploymentAdapter.My
         TextView employmentPosition;
         @BindView(R.id.employment_salary)
         TextView employmentSalary;
-        @BindView(R.id.employment_type)
-        TextView employmentType;
         @BindView(R.id.employment_company_name)
         TextView employmentCompanyName;
         @BindView(R.id.employment_address)

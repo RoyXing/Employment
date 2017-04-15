@@ -36,16 +36,16 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        Fragmentation.builder()
-                .stackViewMode(Fragmentation.BUBBLE)
-                .debug(BuildConfig.DEBUG)
-                .handleException(new ExceptionHandler() {
-                    @Override
-                    public void onException(Exception e) {
-
-                    }
-                })
-                .install();
+//        Fragmentation.builder()
+//                .stackViewMode(Fragmentation.BUBBLE)
+//                .debug(BuildConfig.DEBUG)
+//                .handleException(new ExceptionHandler() {
+//                    @Override
+//                    public void onException(Exception e) {
+//
+//                    }
+//                })
+//                .install();
         Realm.init(instance);
     }
 
