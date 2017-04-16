@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DesignDemo">
+        android:theme="@style/Base.Theme.DesignDemo">
 
         <activity android:name=".activity.WelcomeActivity">
 
@@ -26,7 +26,6 @@
 
         <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/Base.Theme.DesignDemo"
             android:launchMode="singleTask" />
 
         <activity
@@ -35,7 +34,12 @@
 
         <activity
             android:name=".activity.EmploymentDetailActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.DesignDemo" />
+        <activity
+            android:name=".activity.NoteActivity"
             android:launchMode="singleTask" />
+
     </application>
 
 </manifest>

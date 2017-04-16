@@ -20,6 +20,6 @@ public interface AdminApi {
     @GET("start-image/{res}")
     Observable<WelcomeBean> getWelcomeInfo(@Path("res") String res);
 
-    @POST()
+    @POST("login/login")
     Observable<AdminInfo> adminLoginFetchInfo(@QueryMap HashMap<String, String> map);
 }

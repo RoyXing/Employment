@@ -14,7 +14,7 @@ import retrofit2.http.QueryMap;
 
 public interface CompanyApi {
 
-    @POST()
+    @POST("login/login")
     Observable<CompanyInfo> companyLoginFetchInfo(@QueryMap HashMap<String, String> map);
 
 }

@@ -91,21 +91,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     private SupportFragment[] mFragments = new SupportFragment[5];
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        if (SharedPreferenceUtil.getUserStatud() == 2) {
-            hideFragment = Constants.TYPE_RECRUITMENT;
-            showFragment = Constants.TYPE_RECRUITMENT;
-        } else if (SharedPreferenceUtil.getUserStatud() == 3) {
-            hideFragment = Constants.TYPE_CHECK_INFO;
-            showFragment = Constants.TYPE_CHECK_INFO;
-        } else if (SharedPreferenceUtil.getUserStatud() == 1) {
-            hideFragment = Constants.TYPE_CHECK_RECRUITMENT_STATUS;
-            showFragment = Constants.TYPE_CHECK_RECRUITMENT_STATUS;
-        }
-    }
-
-    @Override
     protected void initInject() {
         getActivityComponent().inject(this);
     }

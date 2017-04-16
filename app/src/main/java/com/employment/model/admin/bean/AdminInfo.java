@@ -5,4 +5,6 @@ package com.employment.model.admin.bean;
  */
 
 public class AdminInfo {
+
+
 }

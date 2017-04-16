@@ -57,7 +57,7 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
 
         Disposable disposable;
         if (type.equals("1")) {
-            disposable = mRetrofitHelper.getAdminInfo(new HashMap<String, String>())
+            disposable = mRetrofitHelper.getAdminInfo(map)
                     .compose(RxUtil.<AdminInfo>rxSchedulerHelper())
                     .subscribe(new Consumer<AdminInfo>() {
                         @Override
@@ -72,7 +72,7 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                     });
 
         } else if (type.equals("3")) {
-            disposable = mRetrofitHelper.getACompanyInfo(new HashMap<String, String>())
+            disposable = mRetrofitHelper.getACompanyInfo(map)
                     .compose(RxUtil.<CompanyInfo>rxSchedulerHelper())
                     .subscribe(new Consumer<CompanyInfo>() {
                         @Override

@@ -1,6 +1,7 @@
 package com.employment.http.api;
 
 import com.employment.http.bean.ResponseBean;
+import com.employment.model.student.bean.Note;
 import com.employment.model.student.bean.Recruit;
 import com.employment.model.student.bean.Resume;
 import com.employment.model.student.bean.StudentInfo;
@@ -23,7 +24,6 @@ import retrofit2.http.QueryMap;
 
 public interface StudentApi {
 
-
     @POST("login/login")
     Observable<StudentInfo> studentLoginFetchInfo(@QueryMap HashMap<String, String> map);
 
@@ -35,4 +35,17 @@ public interface StudentApi {
 
     @GET("student/getStudentRecruit")
     Observable<List<Resume>> getResumeInfo(@Query("studentId") String studentId);
+
+    @GET("note/findByStudentId")
+    Observable<List<Note>> getAllNotes(@Query("studentId") String studentId);
+
+    @GET("note/delete")
+    Observable<ResponseBean> deleteNote(@Query("noteId") String noteId);
+
+    @POST("note/update")
+    Observable<ResponseBean> updateNote(@QueryMap HashMap<String, String> map);
+
+    @POST("note/add")
+    Observable<ResponseBean> addNote(@QueryMap HashMap<String, String> map);
+
 }

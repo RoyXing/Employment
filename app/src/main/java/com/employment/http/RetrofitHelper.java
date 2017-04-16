@@ -7,6 +7,7 @@ import com.employment.http.api.AdminApi;
 import com.employment.http.api.CompanyApi;
 import com.employment.http.api.StudentApi;
 import com.employment.http.bean.WelcomeBean;
+import com.employment.model.student.bean.Note;
 import com.employment.model.student.bean.Recruit;
 import com.employment.model.student.bean.Resume;
 import com.employment.model.student.bean.StudentInfo;
@@ -60,5 +61,21 @@ public class RetrofitHelper {
 
     public Observable<List<Resume>> getResumeInfo(String studentId) {
         return studentApi.getResumeInfo(studentId);
+    }
+
+    public Observable<List<Note>> getAllNote(String studentId) {
+        return studentApi.getAllNotes(studentId);
+    }
+
+    public Observable<ResponseBean> deleteNote(String noteId) {
+        return studentApi.deleteNote(noteId);
+    }
+
+    public Observable<ResponseBean> updateNote(HashMap<String, String> map) {
+        return studentApi.updateNote(map);
+    }
+
+    public Observable<ResponseBean> addNote(HashMap<String, String> map) {
+        return studentApi.addNote(map);
     }
 }

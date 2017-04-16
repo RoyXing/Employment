@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.employment.activity.EmploymentDetailActivity;
 import com.employment.activity.LoginActivity;
 import com.employment.activity.MainActivity;
+import com.employment.activity.NoteActivity;
 import com.employment.activity.WelcomeActivity;
 import com.employment.di.module.ActivityModule;
 import com.employment.di.scope.ActivityScope;
@@ -27,4 +28,6 @@ public interface ActivityComponent {
     void inject(LoginActivity loginActivity);
 
     void inject(EmploymentDetailActivity employmentDetailActivity);
+
+    void inject(NoteActivity noteActivity);
 }
