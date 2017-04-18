@@ -2,6 +2,8 @@ package com.employment.model.student.bean;
 
 import com.employment.model.admin.bean.Department;
 
+import java.util.Date;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -38,7 +40,7 @@ public class StudentInfo extends RealmObject {
     private String spassword;
     private String sface;
     private boolean ssex;
-    private String sbirth;
+    private Date sbirth;
     private String spro;
     private int sgrade;
     private int sclass;
@@ -99,11 +101,11 @@ public class StudentInfo extends RealmObject {
         this.ssex = ssex;
     }
 
-    public String getSbirth() {
+    public Date getSbirth() {
         return sbirth;
     }
 
-    public void setSbirth(String sbirth) {
+    public void setSbirth(Date sbirth) {
         this.sbirth = sbirth;
     }
 

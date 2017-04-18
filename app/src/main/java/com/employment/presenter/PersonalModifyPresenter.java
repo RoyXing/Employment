@@ -18,7 +18,14 @@ public class PersonalModifyPresenter extends RxPresenter<PersonalModifyContract.
 
 
     @Inject
-    public PersonalModifyPresenter(RetrofitHelper mRetrofitHelper) {
+    public PersonalModifyPresenter(RetrofitHelper mRetrofitHelper, RealmHelper realmHelper) {
         this.mRetrofitHelper = mRetrofitHelper;
+        this.realmHelper = realmHelper;
+    }
+
+    @Override
+    public void setSelfComment(String comment) {
+        realmHelper.setSelfComment(comment);
+        mView.setCommentSuccess();
     }
 }

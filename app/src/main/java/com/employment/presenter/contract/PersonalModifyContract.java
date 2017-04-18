@@ -10,8 +10,13 @@ import com.employment.base.BaseView;
 public interface PersonalModifyContract {
 
     interface View extends BaseView {
+
+        void setCommentSuccess();
     }
 
     interface Presenter extends BasePresenter<View> {
+
+        void setSelfComment(String comment);
+
     }
 }

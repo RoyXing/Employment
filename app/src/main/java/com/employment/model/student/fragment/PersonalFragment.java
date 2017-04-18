@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.employment.R;
 import com.employment.base.BaseFragment;
-import com.employment.model.student.activity.NoteActivity;
 import com.employment.model.student.activity.PersonalActivity;
 import com.employment.model.student.bean.Employment;
 import com.employment.model.student.bean.StudentInfo;
@@ -21,12 +20,13 @@ import com.employment.presenter.PersonalPresenter;
 import com.employment.presenter.contract.PersonalContract;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by roy on 2017/3/28.
  */
 
-public class PersonalFragment extends BaseFragment<PersonalPresenter> implements PersonalContract.View, View.OnClickListener {
+public class PersonalFragment extends BaseFragment<PersonalPresenter> implements PersonalContract.View {
 
     @BindView(R.id.personal_info_layout)
     CardView personalInfoLayout;
@@ -66,6 +66,14 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
     TextView personalStayTime;
     @BindView(R.id.employment_layout)
     LinearLayout employmentLayout;
+    @BindView(R.id.layout_birthday)
+    LinearLayout layoutBirthday;
+    @BindView(R.id.layout_phone)
+    LinearLayout layoutPhone;
+    @BindView(R.id.layout_email)
+    LinearLayout layoutEmail;
+
+    private StudentInfo studentInfo;
 
     @Override
     protected void initInject() {
@@ -79,9 +87,7 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
 
     @Override
     protected void initEventAndData() {
-        unEmploymentLayout.setOnClickListener(this);
-        employmentLayout.setOnClickListener(this);
-        personalInfoLayout.setOnClickListener(this);
+
     }
 
     @Override
@@ -93,7 +99,7 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
 
     @Override
     public void showContent(StudentInfo studentInfo) {
-
+        this.studentInfo = studentInfo;
         personalName.setText(studentInfo.getSname() + "");
         if (studentInfo.isSsex())
             personalSex.setText("男");
@@ -129,18 +135,49 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
         super.showError(msg);
     }
 
-    @Override
+    @OnClick({R.id.unEmployment_layout, R.id.employment_layout, R.id.comment_by_self_layout, R.id.layout_birthday, R.id.layout_phone, R.id.layout_email})
     public void onClick(View view) {
-        int id = view.getId();
-        switch (id) {
+        Intent intent = new Intent(mContext, PersonalActivity.class);
+        switch (view.getId()) {
+            case R.id.layout_birthday:
+                mPresenter.setBirthday(studentInfo.getSbirth());
+                break;
+            case R.id.layout_phone:
+                mPresenter.setPhone(layoutPhone, studentInfo.getSphone());
+                break;
+            case R.id.layout_email:
+                mPresenter.setEmail(layoutEmail, studentInfo.getSemail());
+                break;
+            case R.id.comment_by_self_layout:
+                intent.putExtra("selfInfo", studentInfo.getSdetail());
+                intent.putExtra("type", "0");
+                ActivityOptions options1 = ActivityOptions.makeSceneTransitionAnimation(mActivity, view, "personalInfo");
+                mContext.startActivity(intent, options1.toBundle());
+                break;
+
             case R.id.unEmployment_layout:
-                Intent intent = new Intent(mContext, PersonalActivity.class);
                 intent.putExtra("info", "info");
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(mActivity, view, "personalInfo");
-                mContext.startActivity(intent, options.toBundle());
+                ActivityOptions options2 = ActivityOptions.makeSceneTransitionAnimation(mActivity, view, "employmentInfo");
+                mContext.startActivity(intent, options2.toBundle());
                 break;
             case R.id.employment_layout:
+
                 break;
         }
+    }
+
+    @Override
+    public void showBirthday(String date) {
+        personalBirthday.setText(date);
+    }
+
+    @Override
+    public void showNewPhone(String newPhone) {
+        personalPhone.setText(newPhone);
+    }
+
+    @Override
+    public void showNewEmail(String newEmail) {
+        personalEmail.setText(newEmail);
     }
 }

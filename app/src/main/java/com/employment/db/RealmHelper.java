@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.employment.model.student.bean.StudentInfo;
 
+import java.util.Date;
+
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -40,6 +42,42 @@ public class RealmHelper {
     public StudentInfo getStudentInfoBean() {
         StudentInfo first = mRealm.where(StudentInfo.class).findFirst();
         return mRealm.copyFromRealm(first);
+    }
+
+    public void setBirthday(final Date date) {
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.where(StudentInfo.class).findFirst().setSbirth(date);
+            }
+        });
+    }
+
+    public void setPhone(final String phone) {
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.where(StudentInfo.class).findFirst().setSphone(phone);
+            }
+        });
+    }
+
+    public void setEmail(final String email) {
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.where(StudentInfo.class).findFirst().setSemail(email);
+            }
+        });
+    }
+
+    public void setSelfComment(final String detail) {
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.where(StudentInfo.class).findFirst().setSdetail(detail);
+            }
+        });
     }
 
 }
