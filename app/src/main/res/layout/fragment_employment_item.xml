@@ -32,19 +32,19 @@
                 android:id="@+id/employment_salary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-               android:layout_alignParentRight="true"
+                android:layout_alignParentRight="true"
                 android:text="5000/"
                 android:textColor="@color/red"
                 android:textSize="16sp" />
 
- <!--           <TextView
-                android:id="@+id/employment_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="校招"
-                android:textColor="@color/red"
-                android:textSize="16sp" />-->
+            <!--           <TextView
+                           android:id="@+id/employment_type"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_alignParentRight="true"
+                           android:text="校招"
+                           android:textColor="@color/red"
+                           android:textSize="16sp" />-->
 
         </RelativeLayout>
 
@@ -85,8 +85,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:gravity="center"
-                android:scaleType="centerCrop"
-                android:src="@drawable/cheese_1" />
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/company_chr_name"

@@ -1,6 +1,5 @@
 package com.employment.presenter;
 
-import com.employment.base.RxBus;
 import com.employment.base.RxPresenter;
 import com.employment.base.RxUtil;
 import com.employment.db.RealmHelper;
@@ -34,7 +33,7 @@ public class NotePresenter extends RxPresenter<NoteContract.View> implements Not
     }
 
     private void registerEvent() {
-        RxBus.getInstance().toDefaultObservable(NoteEvent.class, new Consumer<NoteEvent>() {
+        addRxBusSubscribe(NoteEvent.class, new Consumer<NoteEvent>() {
             @Override
             public void accept(@NonNull NoteEvent note) throws Exception {
                 if (note.getType() == 1) {

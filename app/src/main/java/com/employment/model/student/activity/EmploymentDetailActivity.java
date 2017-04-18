@@ -1,4 +1,4 @@
-package com.employment.activity;
+package com.employment.model.student.activity;
 
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -10,8 +10,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.employment.R;
 import com.employment.base.BaseActivity;
+import com.employment.base.RxBus;
 import com.employment.model.student.bean.Recruit;
 import com.employment.model.student.bean.Resume;
+import com.employment.model.student.event.NoteEvent;
+import com.employment.model.student.event.ResumeEvent;
 import com.employment.presenter.EmploymentDetailsPresenter;
 import com.employment.presenter.contract.EmploymentDetailContract;
 import com.employment.utils.SystemUtils;
@@ -95,6 +98,7 @@ public class EmploymentDetailActivity extends BaseActivity<EmploymentDetailsPres
 
     @Override
     public void applyOk() {
+        RxBus.getInstance().post(new ResumeEvent(1));
         SystemUtils.showToast(this, "投递成功，请等待回复");
     }
 
@@ -106,9 +110,9 @@ public class EmploymentDetailActivity extends BaseActivity<EmploymentDetailsPres
                 isCanApply = false;
             }
         }
-        if (isCanApply)
+        if (isCanApply) {
             mPresenter.applyResume(recruit.getRid(), 0);
-        else
-            SystemUtils.showToast(this, "已经投递，请去面试管理查看状态");
+        } else
+            SystemUtils.showToast(this, "已经投递，请去面试中心查看状态");
     }
 }

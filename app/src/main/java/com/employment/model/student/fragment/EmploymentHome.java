@@ -39,6 +39,7 @@ public class EmploymentHome extends SimpleBaseFragment {
     protected void initEventAndData() {
         employmentMain.setTabMode(TabLayout.MODE_FIXED);
         employmentMain.setupWithViewPager(vpEmploymentMain);
+        fragments.clear();
         for (int i = 0; i < type.length; i++) {
             EmploymentFragment fragment = new EmploymentFragment();
             Bundle bundle = new Bundle();

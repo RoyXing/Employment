@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.employment.R;
-import com.employment.activity.EmploymentDetailActivity;
+import com.employment.model.student.activity.EmploymentDetailActivity;
 import com.employment.base.BaseFragment;
 import com.employment.model.student.adapter.CompanyAdapter;
 import com.employment.model.student.bean.Resume;

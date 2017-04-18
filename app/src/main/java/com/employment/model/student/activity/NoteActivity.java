@@ -1,4 +1,4 @@
-package com.employment.activity;
+package com.employment.model.student.activity;
 
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;

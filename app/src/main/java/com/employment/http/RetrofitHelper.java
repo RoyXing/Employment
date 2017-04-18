@@ -7,10 +7,12 @@ import com.employment.http.api.AdminApi;
 import com.employment.http.api.CompanyApi;
 import com.employment.http.api.StudentApi;
 import com.employment.http.bean.WelcomeBean;
+import com.employment.model.student.bean.Employment;
 import com.employment.model.student.bean.Note;
 import com.employment.model.student.bean.Recruit;
 import com.employment.model.student.bean.Resume;
 import com.employment.model.student.bean.StudentInfo;
+import com.employment.model.student.bean.UnEmployment;
 
 import java.util.HashMap;
 import java.util.List;
@@ -77,5 +79,13 @@ public class RetrofitHelper {
 
     public Observable<ResponseBean> addNote(HashMap<String, String> map) {
         return studentApi.addNote(map);
+    }
+
+    public Observable<Employment> getEmploymentInfo(HashMap<String, String> map) {
+        return studentApi.getEmploymentInfo(map);
+    }
+
+    public Observable<UnEmployment> getUnEmploymentInfo(HashMap<String, String> map) {
+        return studentApi.getUnEmploymentInfo(map);
     }
 }

@@ -13,6 +13,14 @@ android {
         renderscriptTargetApi 23
         renderscriptSupportModeEnabled true
 
+        splits {
+            abi {
+                enable true
+                reset()
+                include 'armeabi', 'armeabi-v7a'
+                universalApk false
+            }
+        }
 //        jackOptions{
 //            enabled true
 //        }
@@ -33,7 +41,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.0.2'
+    compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor "com.jakewharton:butterknife-compiler:8.4.0"

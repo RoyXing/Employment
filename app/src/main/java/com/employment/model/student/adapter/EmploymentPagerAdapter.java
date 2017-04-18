@@ -12,9 +12,8 @@ import com.employment.model.student.fragment.EmploymentHome;
 import java.util.List;
 
 /**
- * Created by codeest on 16/12/22.
+ * Created by roy on 2017/4/15.
  */
-
 public class EmploymentPagerAdapter extends FragmentPagerAdapter {
 
     private List<EmploymentFragment> fragments;

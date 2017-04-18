@@ -2,10 +2,11 @@ package com.employment.di.component;
 
 import android.app.Activity;
 
-import com.employment.activity.EmploymentDetailActivity;
+import com.employment.model.student.activity.EmploymentDetailActivity;
 import com.employment.activity.LoginActivity;
 import com.employment.activity.MainActivity;
-import com.employment.activity.NoteActivity;
+import com.employment.model.student.activity.NoteActivity;
+import com.employment.model.student.activity.PersonalActivity;
 import com.employment.activity.WelcomeActivity;
 import com.employment.di.module.ActivityModule;
 import com.employment.di.scope.ActivityScope;
@@ -30,4 +31,6 @@ public interface ActivityComponent {
     void inject(EmploymentDetailActivity employmentDetailActivity);
 
     void inject(NoteActivity noteActivity);
+
+    void inject(PersonalActivity personalActivity);
 }

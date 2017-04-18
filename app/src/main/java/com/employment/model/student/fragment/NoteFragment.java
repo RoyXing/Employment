@@ -11,7 +11,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.employment.R;
-import com.employment.activity.NoteActivity;
+import com.employment.model.student.activity.NoteActivity;
 import com.employment.base.BaseFragment;
 import com.employment.model.student.adapter.NoteAdapter;
 import com.employment.model.student.bean.Note;

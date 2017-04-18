@@ -33,12 +33,14 @@
             android:launchMode="singleTask" />
 
         <activity
-            android:name=".activity.EmploymentDetailActivity"
+            android:name=".model.student.activity.EmploymentDetailActivity"
             android:launchMode="singleTask"
             android:theme="@style/Theme.DesignDemo" />
         <activity
-            android:name=".activity.NoteActivity"
+            android:name=".model.student.activity.NoteActivity"
             android:launchMode="singleTask" />
+
+        <activity android:name=".model.student.activity.PersonalActivity" />
 
     </application>
 
