@@ -28,4 +28,11 @@ public class SharedPreferenceUtil {
         return getAppSp().getInt(Constants.USER_STATUS, 0);
     }
 
+    public static void setIsLogin(boolean isLogin) {
+        getAppSp().edit().putBoolean(Constants.KEY_IS_LOGIN, isLogin).apply();
+    }
+
+    public static boolean getIsLogin() {
+        return getAppSp().getBoolean(Constants.KEY_IS_LOGIN, false);
+    }
 }

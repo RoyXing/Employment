@@ -87,6 +87,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void loginSuccess() {
+        SharedPreferenceUtil.setIsLogin(true);
         startActivity(new Intent(this, MainActivity.class));
     }
 

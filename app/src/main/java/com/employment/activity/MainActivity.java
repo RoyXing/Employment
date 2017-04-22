@@ -213,6 +213,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             case R.id.logout:
                 App.getInstance().finishAllActivity();
                 SharedPreferenceUtil.setUserStatus(0);
+                App.getAppComponent().realmHelper().clearUserInfo();
+                SharedPreferenceUtil.setIsLogin(false);
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
@@ -262,22 +264,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         return mFragments[FIRST];
     }
 
-    private int getCurrentItem(int item) {
-        switch (item) {
-            case Constants.TYPE_RECRUITMENT:
-                return R.id.nav_employment_info;
-            case Constants.TYPE_COMPANY:
-                return R.id.nav_company_info;
-            case Constants.TYPE_PERSONAL_INFO:
-                return R.id.nav_personal_info;
-            case Constants.TYPE_COMMUNITY:
-                return R.id.nav_community;
-            case Constants.TYPE_NOTE:
-                return R.id.nav_note;
-        }
-        return R.id.nav_employment_info;
-    }
-
     @Override
     public void onBackPressedSupport() {
         android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
@@ -291,10 +277,5 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             }
         });
         builder.show();
-    }
-
-    @Override
-    public void showError(String msg) {
-
     }
 }

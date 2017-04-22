@@ -38,6 +38,8 @@ public class Constants {
 
     public static final String USER_STATUS = "user_status";
 
+    public static final String KEY_IS_LOGIN = "key_is_login";
+
     public static final String HOST = "http://115.159.100.155:8080/CareerManage/api/";
 
     public static final String PATH_DATA = App.getInstance().getCacheDir().getAbsolutePath() + File.separator + "data";

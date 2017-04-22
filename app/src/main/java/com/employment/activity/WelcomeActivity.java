@@ -10,6 +10,7 @@ import com.employment.base.BaseActivity;
 import com.employment.http.bean.WelcomeBean;
 import com.employment.presenter.WelcomePresenter;
 import com.employment.presenter.contract.WelcomeContract;
+import com.employment.utils.SharedPreferenceUtil;
 
 import butterknife.BindView;
 
@@ -41,23 +42,21 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements W
 
     @Override
     public void showContent(WelcomeBean welcomeBean) {
-        Glide.with(this).load(welcomeBean.getImg()).into(welcomeImage);
+        Glide.with(this).load("http://img.lenovomm.com/crawler@cluster-1/ams/fileman/img/icon/2014-08-28024157-_1409208117443_2336.png").into(welcomeImage);
         welcomeImage.animate().scaleX(1.12f).scaleY(1.12f).setDuration(2000).setStartDelay(100).start();
-        tvWelcomeAuthor.setText(welcomeBean.getText());
+        tvWelcomeAuthor.setText("DESIGN BY"+" XZY");
     }
 
     @Override
     public void jumpWhichPage() {
         Intent intent = new Intent();
-        intent.setClass(this,LoginActivity.class);
+        if (SharedPreferenceUtil.getIsLogin())
+            intent.setClass(this, MainActivity.class);
+        else
+            intent.setClass(this, LoginActivity.class);
         startActivity(intent);
         finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-    }
-
-    @Override
-    public void showError(String msg) {
-
     }
 
     @Override

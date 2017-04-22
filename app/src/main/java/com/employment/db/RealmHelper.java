@@ -154,4 +154,14 @@ public class RealmHelper {
         });
     }
 
+    public void clearUserInfo() {
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                mRealm.where(StudentInfo.class).findAll().deleteAllFromRealm();
+                mRealm.where(CompanyInfo.class).findAll().deleteAllFromRealm();
+                mRealm.where(AdminInfo.class).findAll().deleteAllFromRealm();
+            }
+        });
+    }
 }

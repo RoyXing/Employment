@@ -22,7 +22,6 @@ import io.reactivex.functions.Consumer;
 public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implements WelcomeContract.Presenter {
 
     private RetrofitHelper mRetrofitHelper;
-    private static String RES = "1080*1776";
     private static final int COUNT_DOWN_TIME = 2200;
 
     @Inject
@@ -32,25 +31,12 @@ public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implemen
 
     @Override
     public void getWelcomeImage() {
-        Disposable disposable = mRetrofitHelper.getWelcomeInfo(RES)
-                .compose(RxUtil.<WelcomeBean>rxSchedulerHelper())
-                .subscribe(new Consumer<WelcomeBean>() {
-                    @Override
-                    public void accept(@NonNull WelcomeBean welcomeBean) throws Exception {
-                        mView.showContent(welcomeBean);
-                        startCountDown();
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(@NonNull Throwable throwable) throws Exception {
-                        mView.jumpWhichPage();
-                    }
-                });
-        addSubscribe(disposable);
+        mView.showContent(new WelcomeBean());
+        startCountDown();
     }
 
     private void startCountDown() {
-        Disposable disposable = Observable.timer(COUNT_DOWN_TIME, TimeUnit.SECONDS)
+        Disposable disposable = Observable.timer(COUNT_DOWN_TIME, TimeUnit.MILLISECONDS)
                 .compose(RxUtil.<Long>rxSchedulerHelper())
                 .subscribe(new Consumer<Long>() {
                     @Override
