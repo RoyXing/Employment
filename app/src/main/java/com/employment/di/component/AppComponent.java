@@ -1,21 +1,20 @@
 package com.employment.di.component;
 
-import com.employment.db.RealmHelper;
-import com.employment.model.admin.fragment.CheckPostFragment;
-import com.employment.model.admin.fragment.CheckRecruitmentFragment;
-import com.employment.model.admin.fragment.HomeFragment;
 import com.employment.app.App;
-import com.employment.model.company.fragment.CheckFragment;
-import com.employment.model.company.fragment.CheckResumeFragment;
-import com.employment.model.company.fragment.CompanyInfoFragment;
-import com.employment.model.company.fragment.PublishFragment;
+import com.employment.db.RealmHelper;
 import com.employment.di.module.AppModule;
 import com.employment.di.module.HttpModule;
 import com.employment.di.module.PageModule;
 import com.employment.http.RetrofitHelper;
+import com.employment.model.admin.fragment.CheckHomeFragment;
+import com.employment.model.admin.fragment.CheckPostFragment;
+import com.employment.model.admin.fragment.HomeFragment;
+import com.employment.model.company.fragment.CheckFragment;
+import com.employment.model.company.fragment.CheckResumeFragment;
+import com.employment.model.company.fragment.CompanyInfoFragment;
+import com.employment.model.company.fragment.PublishFragment;
 import com.employment.model.student.fragment.CommunityFragment;
 import com.employment.model.student.fragment.CompanyFragment;
-import com.employment.model.student.fragment.EmploymentFragment;
 import com.employment.model.student.fragment.EmploymentHome;
 import com.employment.model.student.fragment.NoteFragment;
 import com.employment.model.student.fragment.PersonalFragment;
@@ -39,7 +38,7 @@ public interface AppComponent {
 
     CheckPostFragment checkPostFragment();
 
-    CheckRecruitmentFragment checkRecruitmentFragment();
+    CheckHomeFragment checkRecruitmentFragment();
 
     HomeFragment homeFragment();
 

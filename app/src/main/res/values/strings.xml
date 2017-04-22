@@ -52,4 +52,24 @@
     <string name="admin_recruitment">招聘信息审核</string>
     <string name="admin_post"><![CDATA[ 帖子审核]]></string>
 
+    <string-array name="status">
+        <item>待就业</item>
+        <item>就业</item>
+        <item>延长学制</item>
+        <item>留学</item>
+        <item>考研</item>
+    </string-array>
+
+    <string-array name="sex">
+        <item>无</item>
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+
+    <string-array name="type">
+        <item>直聘</item>
+        <item>校招</item>
+    </string-array>
+
+
 </resources>

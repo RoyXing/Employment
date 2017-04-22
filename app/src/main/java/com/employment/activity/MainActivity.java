@@ -18,9 +18,11 @@ import com.employment.R;
 import com.employment.app.App;
 import com.employment.app.Constants;
 import com.employment.base.BaseActivity;
+import com.employment.model.admin.bean.AdminInfo;
+import com.employment.model.admin.fragment.CheckHomeFragment;
 import com.employment.model.admin.fragment.CheckPostFragment;
-import com.employment.model.admin.fragment.CheckRecruitmentFragment;
 import com.employment.model.admin.fragment.HomeFragment;
+import com.employment.model.company.bean.CompanyInfo;
 import com.employment.model.company.fragment.CheckFragment;
 import com.employment.model.company.fragment.CheckResumeFragment;
 import com.employment.model.company.fragment.CompanyInfoFragment;
@@ -53,7 +55,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Inject
     CheckPostFragment checkPostFragment;
     @Inject
-    CheckRecruitmentFragment checkRecruitmentFragment;
+    CheckHomeFragment checkRecruitmentFragment;
     @Inject
     HomeFragment homeFragment;
 
@@ -157,6 +159,14 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             StudentInfo studentInfo = (StudentInfo) object;
             Glide.with(this).load(studentInfo.getSface()).into(imageView);
             textView.setText(studentInfo.getSname());
+        } else if (type == 3) {
+            CompanyInfo companyInfo = (CompanyInfo) object;
+            Glide.with(this).load(companyInfo.getCface()).into(imageView);
+            textView.setText(companyInfo.getCname());
+        } else if (type == 1) {
+            AdminInfo adminInfo = (AdminInfo) object;
+            Glide.with(this).load(adminInfo.getUface()).into(imageView);
+            textView.setText(adminInfo.getUrname());
         }
     }
 

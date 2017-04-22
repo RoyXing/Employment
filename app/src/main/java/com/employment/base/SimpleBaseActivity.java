@@ -3,16 +3,10 @@ package com.employment.base;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.employment.app.App;
-import com.employment.di.component.ActivityComponent;
-import com.employment.di.component.DaggerActivityComponent;
-import com.employment.di.module.ActivityModule;
-
-import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.employment.app.App;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -26,6 +27,28 @@ public class SystemUtils {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
+    public static long string2Long(String time) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date = simpleDateFormat.parse(time);
+            return date.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public static Date string2Date(String time) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date = simpleDateFormat.parse(time);
+            return date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return new Date();
+    }
+
     /**
      * 将时间戳转换为时间
      */
@@ -35,5 +58,10 @@ public class SystemUtils {
         Date date = new Date(s);
         res = simpleDateFormat.format(date);
         return res;
+    }
+
+    public static String formatTime(Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return simpleDateFormat.format(date);
     }
 }

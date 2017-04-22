@@ -12,11 +12,15 @@ public interface PersonalModifyContract {
     interface View extends BaseView {
 
         void setCommentSuccess();
+
     }
 
     interface Presenter extends BasePresenter<View> {
 
         void setSelfComment(String comment);
 
+        void commitEmploymentInfo(String status, String position, String salary, String time);
+
+        void commitUnEmployment(String status, String position, String salary);
     }
 }

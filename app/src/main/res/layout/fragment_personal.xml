@@ -226,7 +226,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="电子邮件:" />
+                        android:text="电子邮箱:" />
 
                     <TextView
                         android:id="@+id/personal_email"
@@ -266,6 +266,13 @@
                     android:text="评价"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#eeeeee" />
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -280,10 +287,19 @@
 
                     <RatingBar
                         android:id="@+id/ratingBar"
+                        style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:focusable="false" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#eeeeee" />
 
                 <LinearLayout
                     android:id="@+id/comment_by_self_layout"
@@ -301,18 +317,26 @@
 
                     <TextView
                         android:id="@+id/personal_pingjia"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:drawableRight="@drawable/fragmentation_ic_right"
                         android:text="1111111111111111111" />
 
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#eeeeee" />
 
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/employment_cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/card_margin"
@@ -352,6 +376,7 @@
 
                 </LinearLayout>
 
+                <!--未就业-->
                 <LinearLayout
                     android:id="@+id/unEmployment_layout"
                     android:layout_width="match_parent"
@@ -405,6 +430,7 @@
 
                 </LinearLayout>
 
+                <!--就业-->
                 <LinearLayout
                     android:id="@+id/employment_layout"
                     android:layout_width="match_parent"

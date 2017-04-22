@@ -2,11 +2,13 @@ package com.employment.http;
 
 import com.employment.http.bean.ResponseBean;
 import com.employment.model.admin.bean.AdminInfo;
+import com.employment.model.admin.bean.Department;
 import com.employment.model.company.bean.CompanyInfo;
 import com.employment.http.api.AdminApi;
 import com.employment.http.api.CompanyApi;
 import com.employment.http.api.StudentApi;
 import com.employment.http.bean.WelcomeBean;
+import com.employment.model.company.bean.Interview;
 import com.employment.model.student.bean.Employment;
 import com.employment.model.student.bean.Note;
 import com.employment.model.student.bean.Recruit;
@@ -87,5 +89,26 @@ public class RetrofitHelper {
 
     public Observable<UnEmployment> getUnEmploymentInfo(HashMap<String, String> map) {
         return studentApi.getUnEmploymentInfo(map);
+    }
+
+    public Observable<ResponseBean> commitEmploymentInfo(HashMap<String, String> map) {
+        return studentApi.commitEmploymentInfo(map);
+    }
+
+
+    public Observable<List<Department>> getAllDepartment() {
+        return companyApi.getAllDepartment();
+    }
+
+    public Observable<ResponseBean> commitCompanyInfo(HashMap<String, String> map) {
+        return companyApi.commitCompanyInfo(map);
+    }
+
+    public Observable<List<Interview>> getAllInterview(String companyId) {
+        return companyApi.getAllInterview(companyId);
+    }
+
+    public Observable<ResponseBean> publishRecruit(HashMap<String, String> map) {
+        return companyApi.publishRecruit(map);
     }
 }

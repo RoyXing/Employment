@@ -24,7 +24,9 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
         if (type == 2) {
             mView.setHeader(realmHelper.getStudentInfoBean(), type);
         } else if (type == 3) {
+            mView.setHeader(realmHelper.getCompanyInfoBean(), type);
         } else if (type == 1) {
+            mView.setHeader(realmHelper.getAdminInfoBean(), type);
         }
     }
 }

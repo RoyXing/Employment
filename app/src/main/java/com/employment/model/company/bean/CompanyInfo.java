@@ -2,11 +2,14 @@ package com.employment.model.company.bean;
 
 import java.io.Serializable;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by roy on 2017/4/8.
  */
 
-public class CompanyInfo implements Serializable{
+public class CompanyInfo extends RealmObject implements Serializable {
 
     /**
      * cid : 1
@@ -26,10 +29,11 @@ public class CompanyInfo implements Serializable{
      * cmRecruitsByCid : null
      */
 
+    @PrimaryKey
     private int cid;
     private String cname;
-    private Object cpassword;
-    private Object cface;
+    private String cpassword;
+    private String cface;
     private String chr;
     private String cphone;
     private String cemail;
@@ -38,9 +42,7 @@ public class CompanyInfo implements Serializable{
     private String caddress;
     private long ctime;
     private int cstate;
-    private Object ctype;
-    private Object cmAreaByAid;
-    private Object cmRecruitsByCid;
+    private String ctype;
 
     public int getCid() {
         return cid;
@@ -58,19 +60,19 @@ public class CompanyInfo implements Serializable{
         this.cname = cname;
     }
 
-    public Object getCpassword() {
+    public String getCpassword() {
         return cpassword;
     }
 
-    public void setCpassword(Object cpassword) {
+    public void setCpassword(String cpassword) {
         this.cpassword = cpassword;
     }
 
-    public Object getCface() {
+    public String getCface() {
         return cface;
     }
 
-    public void setCface(Object cface) {
+    public void setCface(String cface) {
         this.cface = cface;
     }
 
@@ -138,27 +140,13 @@ public class CompanyInfo implements Serializable{
         this.cstate = cstate;
     }
 
-    public Object getCtype() {
+    public String getCtype() {
         return ctype;
     }
 
-    public void setCtype(Object ctype) {
+    public void setCtype(String ctype) {
         this.ctype = ctype;
     }
 
-    public Object getCmAreaByAid() {
-        return cmAreaByAid;
-    }
 
-    public void setCmAreaByAid(Object cmAreaByAid) {
-        this.cmAreaByAid = cmAreaByAid;
-    }
-
-    public Object getCmRecruitsByCid() {
-        return cmRecruitsByCid;
-    }
-
-    public void setCmRecruitsByCid(Object cmRecruitsByCid) {
-        this.cmRecruitsByCid = cmRecruitsByCid;
-    }
 }

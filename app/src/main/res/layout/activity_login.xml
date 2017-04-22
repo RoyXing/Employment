@@ -28,7 +28,7 @@
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:text="121007130" />
+                    android:text="123456" />
 
             </android.support.design.widget.TextInputLayout>
 

@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,8 +22,11 @@ import com.employment.db.RealmHelper;
 import com.employment.http.RetrofitHelper;
 import com.employment.model.student.bean.Employment;
 import com.employment.model.student.bean.UnEmployment;
+import com.employment.model.student.event.EmploymentEvent;
 import com.employment.presenter.contract.PersonalContract;
+import com.employment.utils.SystemUtils;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -49,6 +53,20 @@ public class PersonalPresenter extends RxPresenter<PersonalContract.View> implem
         this.mRetrofitHelper = mRetrofitHelper;
         this.realmHelper = realmHelper;
         this.mContext = mContext;
+        registerEvent();
+    }
+
+    private void registerEvent() {
+        addRxBusSubscribe(EmploymentEvent.class, new Consumer<EmploymentEvent>() {
+            @Override
+            public void accept(@NonNull EmploymentEvent employmentEvent) throws Exception {
+                if (employmentEvent.getType().equals("0")) {
+                    getStudentInfo();
+                } else if (employmentEvent.getType().equals("1")) {
+                    getEmployInfo();
+                }
+            }
+        });
     }
 
     @Override
@@ -98,24 +116,30 @@ public class PersonalPresenter extends RxPresenter<PersonalContract.View> implem
     }
 
     @Override
-    public void setBirthday(Date date) {
+    public void setBirthday(final Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
         dialog = new DatePickerDialog(mContext, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                realmHelper.setBirthday(new Date(i, i1, i2));
-                mView.showBirthday(i + "-" + i1 + "-" + i2);
+                Calendar instance = Calendar.getInstance();
+                instance.set(i, i1, i2);
+                Date newDate = instance.getTime();
+                realmHelper.setBirthday(newDate);
+                mView.showBirthday(SystemUtils.formatTime(newDate));
             }
-        }, date.getYear(), date.getMonth(), date.getMonth());
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
         dialog.show();
     }
 
     @Override
     public void setPhone(LinearLayout layout, final String phone) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.popup_layout, null);
-        final EditText textView = (EditText) view.findViewById(R.id.input_text);
+        final EditText content = (EditText) view.findViewById(R.id.input_text);
+        TextView title = (TextView) view.findViewById(R.id.popup_title);
         Button cancel = (Button) view.findViewById(R.id.cancel);
         Button ok = (Button) view.findViewById(R.id.ok);
-        popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,27 +149,32 @@ public class PersonalPresenter extends RxPresenter<PersonalContract.View> implem
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newPhone = textView.getText().toString();
+                String newPhone = content.getText().toString();
                 if (!newPhone.equals(phone) && !newPhone.isEmpty()) {
                     mView.showNewPhone(newPhone);
                     realmHelper.setPhone(newPhone);
+                    popupWindow.dismiss();
                 }
             }
         });
-        popupWindow.setBackgroundDrawable(new ColorDrawable());
+        title.setText("更新电话号码");
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0X00ffffff));
+        backgroundAlpha(0.5f);
         popupWindow.setOutsideTouchable(true);// 非popwindow区域可触摸
+        popupWindow.setOnDismissListener(new PopDismissListener());
         popupWindow.setFocusable(true);//可获取焦点
         popupWindow.setTouchable(true);// 设置可触摸
-        popupWindow.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
+        popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
     }
 
     @Override
     public void setEmail(LinearLayout layout, final String email) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.popup_layout, null);
         final EditText textView = (EditText) view.findViewById(R.id.input_text);
+        TextView title = (TextView) view.findViewById(R.id.popup_title);
         Button cancel = (Button) view.findViewById(R.id.cancel);
         Button ok = (Button) view.findViewById(R.id.ok);
-        popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,25 +188,52 @@ public class PersonalPresenter extends RxPresenter<PersonalContract.View> implem
                 if (!newEmail.equals(email) && !newEmail.isEmpty()) {
                     mView.showNewEmail(newEmail);
                     realmHelper.setEmail(newEmail);
+                    popupWindow.dismiss();
                 }
             }
         });
-        popupWindow.setBackgroundDrawable(new ColorDrawable());
+        title.setText("更新电子邮箱");
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0X00ffffff));
+        backgroundAlpha(0.5f);
         popupWindow.setOutsideTouchable(true);// 非popwindow区域可触摸
+        popupWindow.setOnDismissListener(new PopDismissListener());
         popupWindow.setFocusable(true);//可获取焦点
         popupWindow.setTouchable(true);// 设置可触摸
-        popupWindow.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
+        popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
+    }
+
+
+    /**
+     * 设置添加屏幕的背景透明度
+     *
+     * @param bgAlpha
+     */
+    public void backgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams lp = mContext.getWindow().getAttributes();
+        lp.alpha = bgAlpha; //0.0-1.0
+        mContext.getWindow().setAttributes(lp);
+    }
+
+    /**
+     * 添加新笔记时弹出的popWin关闭的事件，主要是为了将背景透明度改回来
+     */
+    class PopDismissListener implements PopupWindow.OnDismissListener {
+
+        @Override
+        public void onDismiss() {
+            backgroundAlpha(1f);
+        }
     }
 
 
     @Override
     public void detachView() {
         super.detachView();
-        if (dialog.isShowing() && dialog != null) {
+        if (dialog != null && dialog.isShowing()) {
             dialog.hide();
             dialog = null;
         }
-        if (popupWindow.isShowing() && popupWindow != null) {
+        if (popupWindow != null && popupWindow.isShowing()) {
             popupWindow.dismiss();
             popupWindow = null;
         }

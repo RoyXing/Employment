@@ -18,6 +18,7 @@ import com.employment.model.student.bean.StudentInfo;
 import com.employment.model.student.bean.UnEmployment;
 import com.employment.presenter.PersonalPresenter;
 import com.employment.presenter.contract.PersonalContract;
+import com.employment.utils.SystemUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -72,6 +73,8 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
     LinearLayout layoutPhone;
     @BindView(R.id.layout_email)
     LinearLayout layoutEmail;
+    @BindView(R.id.employment_cardView)
+    CardView employmentCardView;
 
     private StudentInfo studentInfo;
 
@@ -108,7 +111,7 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
         personalGrade.setText(studentInfo.getSgrade() + "");
         personalSno.setText(studentInfo.getSno() + "");
         personalPro.setText(studentInfo.getSpro() + "");
-        personalBirthday.setText(studentInfo.getSbirth() + "");
+        personalBirthday.setText(SystemUtils.formatTime(studentInfo.getSbirth()));
         personalPhone.setText(studentInfo.getSphone() + "");
         personalEmail.setText(studentInfo.getSemail() + "");
         ratingBar.setMax(10);
@@ -137,7 +140,7 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
 
     @OnClick({R.id.unEmployment_layout, R.id.employment_layout, R.id.comment_by_self_layout, R.id.layout_birthday, R.id.layout_phone, R.id.layout_email})
     public void onClick(View view) {
-        Intent intent = new Intent(mContext, PersonalActivity.class);
+
         switch (view.getId()) {
             case R.id.layout_birthday:
                 mPresenter.setBirthday(studentInfo.getSbirth());
@@ -149,6 +152,7 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
                 mPresenter.setEmail(layoutEmail, studentInfo.getSemail());
                 break;
             case R.id.comment_by_self_layout:
+                Intent intent = new Intent(mContext, PersonalActivity.class);
                 intent.putExtra("selfInfo", studentInfo.getSdetail());
                 intent.putExtra("type", "0");
                 ActivityOptions options1 = ActivityOptions.makeSceneTransitionAnimation(mActivity, view, "personalInfo");
@@ -156,9 +160,11 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
                 break;
 
             case R.id.unEmployment_layout:
-                intent.putExtra("info", "info");
-                ActivityOptions options2 = ActivityOptions.makeSceneTransitionAnimation(mActivity, view, "employmentInfo");
-                mContext.startActivity(intent, options2.toBundle());
+                Intent intent1 = new Intent(mContext, PersonalActivity.class);
+                intent1.putExtra("info", "info");
+                intent1.putExtra("type", "1");
+                ActivityOptions options2 = ActivityOptions.makeSceneTransitionAnimation(mActivity, employmentCardView, "employmentInfo");
+                mContext.startActivity(intent1, options2.toBundle());
                 break;
             case R.id.employment_layout:
 

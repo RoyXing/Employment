@@ -1,5 +1,6 @@
 package com.employment.di.module;
 
+import com.employment.model.admin.fragment.CheckHomeFragment;
 import com.employment.model.admin.fragment.CheckPostFragment;
 import com.employment.model.admin.fragment.CheckRecruitmentFragment;
 import com.employment.model.admin.fragment.HomeFragment;
@@ -34,8 +35,8 @@ public class PageModule {
 
     @Singleton
     @Provides
-    CheckRecruitmentFragment provideCheckRecruitmentFragment(){
-        return new CheckRecruitmentFragment();
+    CheckHomeFragment provideCheckRecruitmentFragment(){
+        return new CheckHomeFragment();
     }
 
     @Singleton

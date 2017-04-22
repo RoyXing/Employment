@@ -1,15 +1,17 @@
 package com.employment.model.student.activity;
 
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatSpinner;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.employment.R;
-import com.employment.app.App;
 import com.employment.base.BaseActivity;
 import com.employment.presenter.PersonalModifyPresenter;
 import com.employment.presenter.contract.PersonalModifyContract;
@@ -21,15 +23,33 @@ import butterknife.ButterKnife;
  * Created by roy on 2017/4/17.
  */
 
-public class PersonalActivity extends BaseActivity<PersonalModifyPresenter> implements PersonalModifyContract.View {
-
+public class PersonalActivity extends BaseActivity<PersonalModifyPresenter> implements PersonalModifyContract.View, AdapterView.OnItemSelectedListener {
 
     @BindView(R.id.person_self_detail)
     EditText personSelfDetail;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.personal_activity_self_comment)
-    LinearLayout commentLayout;
+    CardView commentLayout;
+    @BindView(R.id.personal_graduate_status_spinner)
+    AppCompatSpinner spinner;
+    @BindView(R.id.cardView_employment_layout)
+    CardView cardViewEmploymentLayout;
+    @BindView(R.id.personal_unEmployment_layout)
+    LinearLayout personalUnEmploymentLayout;
+    @BindView(R.id.personal_employment_layout)
+    LinearLayout personalEmploymentLayout;
+    @BindView(R.id.personal_expect_position1)
+    EditText personalExpectPosition1;
+    @BindView(R.id.personal_expect_salary1)
+    EditText personalExpectSalary1;
+    @BindView(R.id.personal_stay_position1)
+    EditText personalStayPosition1;
+    @BindView(R.id.personal_stay_salary1)
+    EditText personalStaySalary1;
+    @BindView(R.id.personal_stay_time1)
+    EditText personalStayTime1;
+
     private String type;
 
     @Override
@@ -50,6 +70,10 @@ public class PersonalActivity extends BaseActivity<PersonalModifyPresenter> impl
             commentLayout.setVisibility(View.VISIBLE);
             String selfInfo = getIntent().getStringExtra("selfInfo");
             personSelfDetail.setText(selfInfo + "");
+        } else if (type.equals("1")) {
+            cardViewEmploymentLayout.setVisibility(View.VISIBLE);
+            spinner.setOnItemSelectedListener(this);
+
         }
     }
 
@@ -65,7 +89,13 @@ public class PersonalActivity extends BaseActivity<PersonalModifyPresenter> impl
             if (type.equals("0")) {
                 mPresenter.setSelfComment(personSelfDetail.getText().toString());
             } else if (type.equals("1")) {
+                cardViewEmploymentLayout.setVisibility(View.VISIBLE);
+                if (personalEmploymentLayout.getVisibility() == View.VISIBLE) {//更改的就业状态
+                    mPresenter.commitEmploymentInfo("5", personalStayPosition1.getText().toString(),
+                            personalStaySalary1.getText().toString(), personalStayTime1.getText().toString());
+                } else if (personalUnEmploymentLayout.getVisibility() == View.GONE) {
 
+                }
             }
         }
         return super.onOptionsItemSelected(item);
@@ -75,4 +105,42 @@ public class PersonalActivity extends BaseActivity<PersonalModifyPresenter> impl
     public void setCommentSuccess() {
         finishAfterTransition();
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String[] status = getResources().getStringArray(R.array.status);
+        switch (status[i]) {
+            case "待就业":
+                personalUnEmploymentLayout.setVisibility(View.VISIBLE);
+                personalEmploymentLayout.setVisibility(View.GONE);
+                break;
+            case "就业":
+                personalUnEmploymentLayout.setVisibility(View.GONE);
+                personalEmploymentLayout.setVisibility(View.VISIBLE);
+                break;
+            case "延长学制":
+
+                break;
+            case "留学":
+
+                break;
+            case "考研":
+
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+    }
+
+    @Override
+    public void onBackPressedSupport() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            pop();
+        } else {
+            finishAfterTransition();
+        }
+    }
+
 }

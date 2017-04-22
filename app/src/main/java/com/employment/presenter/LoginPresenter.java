@@ -62,12 +62,13 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                     .subscribe(new Consumer<AdminInfo>() {
                         @Override
                         public void accept(@NonNull AdminInfo adminInfo) throws Exception {
+                            realmHelper.insertAdminInfo(adminInfo);
                             mView.loginSuccess();
                         }
                     }, new Consumer<Throwable>() {
                         @Override
                         public void accept(@NonNull Throwable throwable) throws Exception {
-                            mView.loginSuccess();
+                            mView.loginFailure();
                         }
                     });
 
@@ -77,6 +78,7 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                     .subscribe(new Consumer<CompanyInfo>() {
                         @Override
                         public void accept(@NonNull CompanyInfo companyInfo) throws Exception {
+                            realmHelper.insertCompanyInfo(companyInfo);
                             mView.loginSuccess();
                         }
                     }, new Consumer<Throwable>() {

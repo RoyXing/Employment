@@ -52,4 +52,7 @@ public interface StudentApi {
 
     @GET("student/getEmpState")
     Observable<UnEmployment> getUnEmploymentInfo(@QueryMap HashMap<String, String> map);
+
+    @POST("student/changeGraduateInfo")
+    Observable<ResponseBean> commitEmploymentInfo(@QueryMap HashMap<String, String> map);
 }

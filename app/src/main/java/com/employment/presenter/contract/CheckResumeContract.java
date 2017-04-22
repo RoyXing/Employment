@@ -11,5 +11,8 @@ public interface CheckResumeContract {
 
     interface View extends BaseView{}
 
-    interface Presenter extends BasePresenter<View>{}
+    interface Presenter extends BasePresenter<View>{
+
+        void getAllInterview();
+    }
 }
