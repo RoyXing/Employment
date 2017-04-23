@@ -222,6 +222,7 @@ public class PersonalPresenter extends RxPresenter<PersonalContract.View> implem
                     public void accept(@NonNull ResponseBean responseBean) throws Exception {
                         if (responseBean.getCode() == 200) {
                             Log.e("roy", "学生信息修改成功");
+                            mView.studentInfoCommitSuccess();
                         }
                     }
                 }, new Consumer<Throwable>() {

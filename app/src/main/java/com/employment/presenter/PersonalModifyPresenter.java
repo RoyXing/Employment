@@ -77,7 +77,27 @@ public class PersonalModifyPresenter extends RxPresenter<PersonalModifyContract.
 
     @Override
     public void commitUnEmployment(String status, String position, String salary) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("studentId", realmHelper.getStudentInfoBean().getSid() + "");
+        map.put("ujobName", position);
+        map.put("uesalary", salary);
 
+        Disposable disposable = mRetrofitHelper.commitUnEmploymentInfo(map)
+                .compose(RxUtil.<ResponseBean>rxSchedulerHelper())
+                .subscribe(new Consumer<ResponseBean>() {
+                    @Override
+                    public void accept(@NonNull ResponseBean responseBean) throws Exception {
+                        mView.setCommentSuccess();
+                        realmHelper.setEmploymentStatus(4);
+                        RxBus.getInstance().post(new EmploymentEvent("1"));
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(@NonNull Throwable throwable) throws Exception {
+                        mView.showError(throwable.toString());
+                    }
+                });
+        addSubscribe(disposable);
     }
 
     @Override

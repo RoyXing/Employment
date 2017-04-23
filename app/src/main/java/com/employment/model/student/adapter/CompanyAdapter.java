@@ -45,14 +45,16 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.MyViewHo
         Resume resume = resumes.get(position);
         holder.companyName.setText(resume.getCmRecruitByRid().getCmCompanyByCid().getCname() + "");
         holder.companyAddress.setText(resume.getCmRecruitByRid().getCmCompanyByCid().getCaddress() + "");
-        holder.companyPosition.setText(resume.getCmRecruitByRid().getCmJobByJid().getJname() + "");
+        holder.companyPosition.setText(resume.getCmRecruitByRid().getRjobName() + "");
         if (resume.getIsuccess() == 0) {
-            holder.companyResumeStatus.setText("请准备面试");
+            holder.companyResumeStatus.setText("等待审核");
         } else if (resume.getIsuccess() == 1) {
-            holder.companyResumeStatus.setText("面试通过，已报道");
+            holder.companyResumeStatus.setText("请准备面试");
         } else if (resume.getIsuccess() == 2) {
-            holder.companyResumeStatus.setText("面试通过，未报道");
+            holder.companyResumeStatus.setText("面试通过，已报道");
         } else if (resume.getIsuccess() == 3) {
+            holder.companyResumeStatus.setText("面试通过，未报道");
+        } else if (resume.getIsuccess() == 4) {
             holder.companyResumeStatus.setText("面试未通过");
         }
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {

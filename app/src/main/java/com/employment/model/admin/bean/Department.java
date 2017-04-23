@@ -1,5 +1,7 @@
 package com.employment.model.admin.bean;
 
+import java.io.Serializable;
+
 import io.realm.RealmModel;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -8,7 +10,7 @@ import io.realm.annotations.PrimaryKey;
  * Created by roy on 2017/4/15.
  */
 
-public class Department extends RealmObject{
+public class Department extends RealmObject implements Serializable {
 
     /**
      * did : 2
@@ -19,6 +21,7 @@ public class Department extends RealmObject{
     @PrimaryKey
     private int did;
     private String depName;
+    private int stuCount;
     private String description;
 
     public int getDid() {
@@ -45,12 +48,11 @@ public class Department extends RealmObject{
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "did=" + did +
-                ", depName='" + depName + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public int getStuCount() {
+        return stuCount;
+    }
+
+    public void setStuCount(int stuCount) {
+        this.stuCount = stuCount;
     }
 }

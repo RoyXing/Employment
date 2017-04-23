@@ -28,6 +28,7 @@ public class UnEmployment {
     private String uemajor;
     private int uesuccess;
     private int uestate;
+    private String ujobName;
     private Object cmStudentBySid;
     private Object cmDirectionByDid;
     private Job cmJobByJid;
@@ -110,5 +111,13 @@ public class UnEmployment {
 
     public void setCmJobByJid(Job cmJobByJid) {
         this.cmJobByJid = cmJobByJid;
+    }
+
+    public String getUjobName() {
+        return ujobName;
+    }
+
+    public void setUjobName(String ujobName) {
+        this.ujobName = ujobName;
     }
 }

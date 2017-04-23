@@ -40,10 +40,14 @@
             android:launchMode="singleTask" />
 
         <activity android:name=".model.student.activity.PersonalActivity" />
+
         <activity
             android:name=".model.admin.activity.CheckEmploymentDetailActivity"
             android:launchMode="singleTask"
             android:theme="@style/Theme.DesignDemo" />
+
+        <activity android:name=".model.company.activity.CheckResumeDetail" />
+
 
     </application>
 

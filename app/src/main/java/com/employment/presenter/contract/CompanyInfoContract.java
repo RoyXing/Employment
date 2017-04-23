@@ -21,6 +21,8 @@ public interface CompanyInfoContract {
         void showModifyInfo(String newInfo,String type);
 
         void showBuildTime(String time);
+
+        void companyInfoCommitSuccess();
     }
 
     interface Presenter extends BasePresenter<View> {

@@ -151,6 +151,7 @@ public class CompanyInfoPresenter extends RxPresenter<CompanyInfoContract.View> 
                     public void accept(@NonNull ResponseBean responseBean) throws Exception {
                         if (responseBean.getCode() == 200) {
                             Log.e("roy", "更新成功");
+
                         }
                     }
                 }, new Consumer<Throwable>() {
