@@ -11,7 +11,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.employment.R;
-import com.employment.app.App;
 import com.employment.base.BaseFragment;
 import com.employment.model.student.activity.PersonalActivity;
 import com.employment.model.student.bean.Employment;
@@ -78,6 +77,7 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
     CardView employmentCardView;
 
     private StudentInfo studentInfo;
+    private boolean isNeedCommit;
 
     @Override
     protected void initInject() {
@@ -103,7 +103,8 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
     @Override
     public void onSupportInvisible() {
         super.onSupportInvisible();
-        mPresenter.commitStudentInfo();
+        if (isNeedCommit)
+            mPresenter.commitStudentInfo();
     }
 
     @Override
@@ -141,7 +142,7 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
         unEmploymentLayout.setVisibility(View.VISIBLE);
         employmentLayout.setVisibility(View.GONE);
         personalGraduateStatus.setText("未就业");
-        personalExpectPosition.setText(unEmployment.getCmJobByJid().getJname() + "");
+        personalExpectPosition.setText(unEmployment.getUjobName() + "");
         personalExpectSalary.setText(unEmployment.getUesalary() + "");
     }
 
@@ -179,23 +180,35 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
                 mContext.startActivity(intent1, options2.toBundle());
                 break;
             case R.id.employment_layout:
-
+                Intent intent2 = new Intent(mContext, PersonalActivity.class);
+                intent2.putExtra("info", "info");
+                intent2.putExtra("type", "1");
+                ActivityOptions options3 = ActivityOptions.makeSceneTransitionAnimation(mActivity, employmentCardView, "employmentInfo");
+                mContext.startActivity(intent2, options3.toBundle());
                 break;
         }
     }
 
     @Override
     public void showBirthday(String date) {
+        isNeedCommit = true;
         personalBirthday.setText(date);
     }
 
     @Override
     public void showNewPhone(String newPhone) {
+        isNeedCommit = true;
         personalPhone.setText(newPhone);
     }
 
     @Override
     public void showNewEmail(String newEmail) {
+        isNeedCommit = true;
         personalEmail.setText(newEmail);
+    }
+
+    @Override
+    public void studentInfoCommitSuccess() {
+        isNeedCommit = false;
     }
 }

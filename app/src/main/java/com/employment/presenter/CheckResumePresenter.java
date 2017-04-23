@@ -36,7 +36,7 @@ public class CheckResumePresenter extends RxPresenter<CheckResumeContract.View> 
                 .subscribe(new Consumer<List<Interview>>() {
                     @Override
                     public void accept(@NonNull List<Interview> interviews) throws Exception {
-
+                        mView.showContent(interviews);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

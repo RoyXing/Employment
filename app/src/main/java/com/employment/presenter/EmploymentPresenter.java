@@ -29,7 +29,8 @@ public class EmploymentPresenter extends RxPresenter<EmploymentContract.View> im
 
     @Override
     public void loadEmploymentInfo(String type) {
-        Disposable disposable = mRetrofitHelper.findRecruits(type).compose(RxUtil.<List<Recruit>>rxSchedulerHelper())
+        Disposable disposable = mRetrofitHelper.findRecruits(type)
+                .compose(RxUtil.<List<Recruit>>rxSchedulerHelper())
                 .subscribe(new Consumer<List<Recruit>>() {
                     @Override
                     public void accept(@NonNull List<Recruit> recruits) throws Exception {
@@ -42,7 +43,6 @@ public class EmploymentPresenter extends RxPresenter<EmploymentContract.View> im
                     }
                 });
         addSubscribe(disposable);
-
     }
 
     @Override

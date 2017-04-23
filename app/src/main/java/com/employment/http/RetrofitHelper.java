@@ -95,6 +95,11 @@ public class RetrofitHelper {
         return studentApi.commitEmploymentInfo(map);
     }
 
+    public Observable<ResponseBean> commitUnEmploymentInfo(HashMap<String, String> map){
+        return studentApi.commitUnEmploymentInfo(map);
+    }
+
+
     public Observable<ResponseBean> commitStudentInfo(HashMap<String, String> map) {
         return studentApi.commitStudentInfo(map);
     }

@@ -2,6 +2,9 @@ package com.employment.presenter.contract;
 
 import com.employment.base.BasePresenter;
 import com.employment.base.BaseView;
+import com.employment.model.company.bean.Interview;
+
+import java.util.List;
 
 /**
  * Created by roy on 2017/4/9.
@@ -9,9 +12,12 @@ import com.employment.base.BaseView;
 
 public interface CheckResumeContract {
 
-    interface View extends BaseView{}
+    interface View extends BaseView {
 
-    interface Presenter extends BasePresenter<View>{
+        void showContent(List<Interview> interviews);
+    }
+
+    interface Presenter extends BasePresenter<View> {
 
         void getAllInterview();
     }

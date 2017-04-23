@@ -29,6 +29,8 @@ public interface PersonalContract {
         void showNewPhone(String newPhone);
 
         void showNewEmail(String newEmail);
+
+        void studentInfoCommitSuccess();
     }
 
     interface Presenter extends BasePresenter<View> {

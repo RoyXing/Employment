@@ -41,6 +41,8 @@ public class CompanyInfoFragment extends BaseFragment<CompanyInfoPresenter> impl
     @BindView(R.id.company_info_layout)
     LinearLayout companyInfoLayout;
 
+    private boolean isNeedCommit;
+
     @Override
     protected void initInject() {
         getFragmentComponent().inject(this);
@@ -65,7 +67,8 @@ public class CompanyInfoFragment extends BaseFragment<CompanyInfoPresenter> impl
     @Override
     public void onSupportInvisible() {
         super.onSupportInvisible();
-        mPresenter.commitCompanyInfo();
+        if (isNeedCommit)
+            mPresenter.commitCompanyInfo();
     }
 
     @Override
@@ -81,6 +84,7 @@ public class CompanyInfoFragment extends BaseFragment<CompanyInfoPresenter> impl
 
     @Override
     public void showModifyInfo(String newInfo, String type) {
+        isNeedCommit = true;
         switch (type) {
             case "0":
                 companyInfoAddress.setText(newInfo);
@@ -102,7 +106,13 @@ public class CompanyInfoFragment extends BaseFragment<CompanyInfoPresenter> impl
 
     @Override
     public void showBuildTime(String time) {
+        isNeedCommit = true;
         companyInfoBuildTime.setText(time);
+    }
+
+    @Override
+    public void companyInfoCommitSuccess() {
+        isNeedCommit = false;
     }
 
     @OnClick({R.id.company_info_address, R.id.company_info_build_time, R.id.company_info_phone, R.id.company_info_email, R.id.company_info_hr, R.id.company_info_info})

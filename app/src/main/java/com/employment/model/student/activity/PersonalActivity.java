@@ -76,7 +76,6 @@ public class PersonalActivity extends BaseActivity<PersonalModifyPresenter> impl
         } else if (type.equals("1")) {
             cardViewEmploymentLayout.setVisibility(View.VISIBLE);
             spinner.setOnItemSelectedListener(this);
-
         }
     }
 
@@ -97,8 +96,9 @@ public class PersonalActivity extends BaseActivity<PersonalModifyPresenter> impl
                     mPresenter.commitEmploymentInfo("5", personalStayPosition1.getText().toString(),
                             personalStaySalary1.getText().toString(), personalStayTime1.getText().toString().equals("") ?
                                     SystemUtils.formatTime(new Date()) : personalStayTime1.getText().toString());
-                } else if (personalUnEmploymentLayout.getVisibility() == View.GONE) {
-
+                } else if (personalUnEmploymentLayout.getVisibility() == View.VISIBLE) {
+                    mPresenter.commitUnEmployment("4", personalExpectPosition1.getText().toString(),
+                            personalExpectSalary1.getText().toString());
                 }
             }
         }
