@@ -2,6 +2,7 @@ package com.employment.di.component;
 
 import android.app.Activity;
 
+import com.employment.model.company.activity.CheckResumeDetail;
 import com.employment.model.student.activity.EmploymentDetailActivity;
 import com.employment.activity.LoginActivity;
 import com.employment.activity.MainActivity;
@@ -33,4 +34,6 @@ public interface ActivityComponent {
     void inject(NoteActivity noteActivity);
 
     void inject(PersonalActivity personalActivity);
+
+    void inject(CheckResumeDetail checkResumeDetail);
 }

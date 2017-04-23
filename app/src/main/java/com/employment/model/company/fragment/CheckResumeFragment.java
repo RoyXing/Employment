@@ -75,6 +75,8 @@ public class CheckResumeFragment extends BaseFragment<CheckResumePresenter> impl
     public void onItemClick(View view, int position) {
         Intent intent = new Intent(mContext, CheckResumeDetail.class);
         intent.putExtra("info", adapter.getInterviews().get(position).getCmStudentBySid());
+        intent.putExtra("interviewId",adapter.getInterviews().get(position).getIid());
+        intent.putExtra("status",adapter.getInterviews().get(position).getIsuccess());
         startActivity(intent);
     }
 }

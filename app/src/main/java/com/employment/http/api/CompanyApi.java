@@ -34,4 +34,7 @@ public interface CompanyApi {
 
     @POST("recruit/add")
     Observable<ResponseBean> publishRecruit(@QueryMap HashMap<String, Object> map);
+
+    @POST("inter/verify")
+    Observable<ResponseBean> commitInterviewInfo(@QueryMap HashMap<String, String> map);
 }

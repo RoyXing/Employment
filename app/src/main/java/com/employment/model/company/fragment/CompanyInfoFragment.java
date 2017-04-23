@@ -13,8 +13,6 @@ import com.employment.presenter.CompanyInfoPresenter;
 import com.employment.presenter.contract.CompanyInfoContract;
 import com.employment.utils.SystemUtils;
 
-import java.util.Date;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 

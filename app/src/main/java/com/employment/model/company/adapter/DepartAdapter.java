@@ -36,10 +36,9 @@ public class DepartAdapter extends RecyclerView.Adapter<DepartAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
         holder.departmentDesc.setText(list.get(position).getDescription() + "");
         holder.departmentName.setText(list.get(position).getDepName() + "");
-
+        holder.departmentCount.setText(list.get(position).getStuCount() + "");
     }
 
     @Override
@@ -53,6 +52,8 @@ public class DepartAdapter extends RecyclerView.Adapter<DepartAdapter.MyViewHold
         TextView departmentName;
         @BindView(R.id.department_desc)
         TextView departmentDesc;
+        @BindView(R.id.department_count)
+        TextView departmentCount;
 
         public MyViewHolder(View itemView) {
             super(itemView);

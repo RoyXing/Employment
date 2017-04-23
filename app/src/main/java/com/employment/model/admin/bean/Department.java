@@ -10,7 +10,7 @@ import io.realm.annotations.PrimaryKey;
  * Created by roy on 2017/4/15.
  */
 
-public class Department extends RealmObject implements Serializable{
+public class Department extends RealmObject implements Serializable {
 
     /**
      * did : 2
@@ -21,6 +21,7 @@ public class Department extends RealmObject implements Serializable{
     @PrimaryKey
     private int did;
     private String depName;
+    private int stuCount;
     private String description;
 
     public int getDid() {
@@ -47,12 +48,11 @@ public class Department extends RealmObject implements Serializable{
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "did=" + did +
-                ", depName='" + depName + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public int getStuCount() {
+        return stuCount;
+    }
+
+    public void setStuCount(int stuCount) {
+        this.stuCount = stuCount;
     }
 }

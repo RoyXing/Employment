@@ -119,4 +119,8 @@ public class RetrofitHelper {
     public Observable<ResponseBean> publishRecruit(HashMap<String, Object> map) {
         return companyApi.publishRecruit(map);
     }
+
+    public Observable<ResponseBean> commitInterviewInfo(HashMap<String, String> map){
+        return companyApi.commitInterviewInfo(map);
+    }
 }

@@ -5,6 +5,7 @@ import com.employment.base.RxUtil;
 import com.employment.db.RealmHelper;
 import com.employment.http.RetrofitHelper;
 import com.employment.model.company.bean.Interview;
+import com.employment.model.company.event.CompanyEvent;
 import com.employment.presenter.contract.CheckResumeContract;
 
 import java.util.List;
@@ -27,6 +28,18 @@ public class CheckResumePresenter extends RxPresenter<CheckResumeContract.View> 
     public CheckResumePresenter(RetrofitHelper mRetrofitHelper, RealmHelper realmHelper) {
         this.mRetrofitHelper = mRetrofitHelper;
         this.realmHelper = realmHelper;
+        registerEvent();
+    }
+
+    private void registerEvent() {
+        addRxBusSubscribe(CompanyEvent.class, new Consumer<CompanyEvent>() {
+            @Override
+            public void accept(@NonNull CompanyEvent companyEvent) throws Exception {
+                if (companyEvent.getType().equals("0")) {
+                    getAllInterview();
+                }
+            }
+        });
     }
 
     @Override
