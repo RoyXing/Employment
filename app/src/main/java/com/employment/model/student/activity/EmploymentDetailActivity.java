@@ -84,8 +84,8 @@ public class EmploymentDetailActivity extends BaseActivity<EmploymentDetailsPres
         companyDetailText.setText(recruit.getCmCompanyByCid().getCinfo());
         companyDetailPosition.setText(recruit.getRinfo());
         companyDetailTotalPerson.setText(recruit.getRnum() + "");
-        companyDetailPublishTime.setText(SystemUtils.stampToDate(recruit.getRstart()));
-        companyDetailDeadline.setText(SystemUtils.stampToDate(recruit.getRend()));
+        companyDetailPublishTime.setText(recruit.getRstart());
+        companyDetailDeadline.setText(recruit.getRend());
         companyPhone.setText(recruit.getCmCompanyByCid().getCphone() + "");
         companyEmail.setText(recruit.getCmCompanyByCid().getCemail() + "");
         floatingActionButton.setOnClickListener(this);

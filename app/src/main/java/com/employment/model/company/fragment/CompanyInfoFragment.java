@@ -72,7 +72,7 @@ public class CompanyInfoFragment extends BaseFragment<CompanyInfoPresenter> impl
     public void showContent(CompanyInfo companyInfo) {
         companyInfoName.setText(companyInfo.getCname() + "");
         companyInfoAddress.setText(companyInfo.getCaddress() + "");
-        companyInfoBuildTime.setText(SystemUtils.stampToDate(companyInfo.getCtime()));
+        companyInfoBuildTime.setText(companyInfo.getCtime());
         companyInfoPhone.setText(companyInfo.getCphone() + "");
         companyInfoEmail.setText(companyInfo.getCemail() + "");
         companyInfoHr.setText(companyInfo.getChr() + "");

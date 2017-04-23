@@ -42,9 +42,11 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements W
 
     @Override
     public void showContent(WelcomeBean welcomeBean) {
-        Glide.with(this).load("http://img.lenovomm.com/crawler@cluster-1/ams/fileman/img/icon/2014-08-28024157-_1409208117443_2336.png").into(welcomeImage);
-        welcomeImage.animate().scaleX(1.12f).scaleY(1.12f).setDuration(2000).setStartDelay(100).start();
-        tvWelcomeAuthor.setText("DESIGN BY"+" XZY");
+        welcomeImage.setScaleX(0.8f);
+        welcomeImage.setScaleY(0.8f);
+        Glide.with(this).load("http://wgyxy.lcu.edu.cn/my-uploads/domain/wgyxy.lcu.edu.cn/2015/01/A4-690x407.jpg").into(welcomeImage);
+        welcomeImage.animate().scaleX(1.0f).scaleY(1.0f).setDuration(1800).setStartDelay(100).start();
+        tvWelcomeAuthor.setText("DESIGN BY" + " XZY");
     }
 
     @Override
@@ -64,5 +66,4 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements W
         Glide.clear(welcomeImage);
         super.onDestroy();
     }
-
 }

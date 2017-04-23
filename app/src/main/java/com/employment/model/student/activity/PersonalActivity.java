@@ -1,6 +1,5 @@
 package com.employment.model.student.activity;
 
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
@@ -10,14 +9,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.employment.R;
 import com.employment.base.BaseActivity;
 import com.employment.presenter.PersonalModifyPresenter;
 import com.employment.presenter.contract.PersonalModifyContract;
+import com.employment.utils.SystemUtils;
+
+import java.util.Date;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by roy on 2017/4/17.
@@ -48,7 +51,7 @@ public class PersonalActivity extends BaseActivity<PersonalModifyPresenter> impl
     @BindView(R.id.personal_stay_salary1)
     EditText personalStaySalary1;
     @BindView(R.id.personal_stay_time1)
-    EditText personalStayTime1;
+    TextView personalStayTime1;
 
     private String type;
 
@@ -92,7 +95,8 @@ public class PersonalActivity extends BaseActivity<PersonalModifyPresenter> impl
                 cardViewEmploymentLayout.setVisibility(View.VISIBLE);
                 if (personalEmploymentLayout.getVisibility() == View.VISIBLE) {//更改的就业状态
                     mPresenter.commitEmploymentInfo("5", personalStayPosition1.getText().toString(),
-                            personalStaySalary1.getText().toString(), personalStayTime1.getText().toString());
+                            personalStaySalary1.getText().toString(), personalStayTime1.getText().toString().equals("") ?
+                                    SystemUtils.formatTime(new Date()) : personalStayTime1.getText().toString());
                 } else if (personalUnEmploymentLayout.getVisibility() == View.GONE) {
 
                 }
@@ -104,6 +108,11 @@ public class PersonalActivity extends BaseActivity<PersonalModifyPresenter> impl
     @Override
     public void setCommentSuccess() {
         finishAfterTransition();
+    }
+
+    @Override
+    public void showStayDate(String date) {
+        personalStayTime1.setText(date);
     }
 
     @Override
@@ -134,6 +143,14 @@ public class PersonalActivity extends BaseActivity<PersonalModifyPresenter> impl
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
 
+    @OnClick(R.id.personal_stay_time1)
+    public void onViewClicked() {
+        if (personalStayTime1.getText().toString().isEmpty())
+            mPresenter.chooseStayTime(new Date());
+        else
+            mPresenter.chooseStayTime(SystemUtils.string2Date(personalStayTime1.getText().toString()));
+    }
+
     @Override
     public void onBackPressedSupport() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
@@ -142,5 +159,4 @@ public class PersonalActivity extends BaseActivity<PersonalModifyPresenter> impl
             finishAfterTransition();
         }
     }
-
 }

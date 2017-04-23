@@ -56,7 +56,7 @@
             android:layout_marginRight="@dimen/card_margin"
             android:layout_marginTop="@dimen/card_margin"
             android:transitionName="employmentInfo"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 style="@style/Widget.CardContent"
@@ -104,7 +104,7 @@
                     android:background="#eeeeee" />
 
                 <LinearLayout
-                    android:id="@+id/personal_unEmployment_layout"
+                    android:id="@+id/personal_employment_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -121,73 +121,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="期望岗位:" />
-
-                        <EditText
-                            android:id="@+id/personal_expect_position1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="1111111111111111111" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="5dp"
-                        android:background="#eeeeee" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|left"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="期望薪资:" />
-
-                        <EditText
-                            android:id="@+id/personal_expect_salary1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="1111111111111111111" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/personal_employment_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center|left"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
                             android:text="工作岗位:" />
 
                         <EditText
                             android:id="@+id/personal_stay_position1"
-                            android:layout_width="wrap_content"
+                            style="@style/edittext_style"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="1111111111111111111" />
+                            android:text="" />
 
                     </LinearLayout>
 
@@ -212,10 +154,11 @@
 
                         <EditText
                             android:id="@+id/personal_stay_salary1"
-                            android:layout_width="wrap_content"
+                            style="@style/edittext_style"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="1111111111111111111" />
+                            android:text="" />
 
                     </LinearLayout>
 
@@ -238,12 +181,13 @@
                             android:gravity="center"
                             android:text="入职时间:" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/personal_stay_time1"
-                            android:layout_width="wrap_content"
+                            style="@style/edittext_style"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="1111111111111111111" />
+                            android:text="" />
 
                     </LinearLayout>
 
@@ -252,6 +196,67 @@
                         android:layout_height="1dp"
                         android:layout_marginTop="5dp"
                         android:background="#eeeeee" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/personal_unEmployment_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center|left"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="期望岗位:" />
+
+                        <EditText
+                            android:id="@+id/personal_expect_position1"
+                            style="@style/edittext_style"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#eeeeee" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center|left"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="期望薪资:" />
+
+                        <EditText
+                            android:id="@+id/personal_expect_salary1"
+                            style="@style/edittext_style"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

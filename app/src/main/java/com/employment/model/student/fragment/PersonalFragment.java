@@ -11,6 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.employment.R;
+import com.employment.app.App;
 import com.employment.base.BaseFragment;
 import com.employment.model.student.activity.PersonalActivity;
 import com.employment.model.student.bean.Employment;
@@ -90,7 +91,6 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
 
     @Override
     protected void initEventAndData() {
-
     }
 
     @Override
@@ -98,6 +98,12 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
         super.onLazyInitView(savedInstanceState);
         mPresenter.getStudentInfo();
         mPresenter.getEmployInfo();
+    }
+
+    @Override
+    public void onSupportInvisible() {
+        super.onSupportInvisible();
+        mPresenter.commitStudentInfo();
     }
 
     @Override
@@ -122,6 +128,12 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
 
     @Override
     public void showEmploymentInfo(Employment employment) {
+        unEmploymentLayout.setVisibility(View.GONE);
+        employmentLayout.setVisibility(View.VISIBLE);
+        personalGraduateStatus.setText("就业");
+        personalStayPosition.setText(employment.getEjobName());
+        personalStaySalary.setText(employment.getEsalary() + "");
+        personalStayTime.setText(employment.getEtime());
     }
 
     @Override
@@ -143,13 +155,13 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter> implements
 
         switch (view.getId()) {
             case R.id.layout_birthday:
-                mPresenter.setBirthday(studentInfo.getSbirth());
+                mPresenter.setBirthday(SystemUtils.string2Date(personalBirthday.getText().toString()));
                 break;
             case R.id.layout_phone:
-                mPresenter.setPhone(layoutPhone, studentInfo.getSphone());
+                mPresenter.setPhone(layoutPhone, personalPhone.getText().toString());
                 break;
             case R.id.layout_email:
-                mPresenter.setEmail(layoutEmail, studentInfo.getSemail());
+                mPresenter.setEmail(layoutEmail, personalEmail.getText().toString());
                 break;
             case R.id.comment_by_self_layout:
                 Intent intent = new Intent(mContext, PersonalActivity.class);

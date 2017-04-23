@@ -33,5 +33,5 @@ public interface CompanyApi {
     Observable<List<Interview>> getAllInterview(@Query("companyId") String companyId);
 
     @POST("recruit/add")
-    Observable<ResponseBean> publishRecruit(@QueryMap HashMap<String, String> map);
+    Observable<ResponseBean> publishRecruit(@QueryMap HashMap<String, Object> map);
 }

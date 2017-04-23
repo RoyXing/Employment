@@ -42,5 +42,7 @@ public interface PersonalContract {
         void setPhone(LinearLayout view, String phone);
 
         void setEmail(LinearLayout view,String email);
+
+        void commitStudentInfo();
     }
 }

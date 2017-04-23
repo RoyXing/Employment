@@ -64,4 +64,15 @@ public class SystemUtils {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return simpleDateFormat.format(date);
     }
+
+    public static String formatTimeToServer(Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return simpleDateFormat.format(date);
+    }
+
+    public static String formatTimeToServer(long s) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date(s);
+        return simpleDateFormat.format(date);
+    }
 }

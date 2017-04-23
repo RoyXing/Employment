@@ -23,7 +23,7 @@ public class UnEmployment {
 
     private int ueid;
     private int uesalary;
-    private long uetime;
+    private String uetime;
     private String ueschool;
     private String uemajor;
     private int uesuccess;
@@ -48,11 +48,11 @@ public class UnEmployment {
         this.uesalary = uesalary;
     }
 
-    public long getUetime() {
+    public String getUetime() {
         return uetime;
     }
 
-    public void setUetime(long uetime) {
+    public void setUetime(String uetime) {
         this.uetime = uetime;
     }
 

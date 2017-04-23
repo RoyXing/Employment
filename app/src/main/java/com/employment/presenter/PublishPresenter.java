@@ -39,7 +39,7 @@ public class PublishPresenter extends RxPresenter<PublishContract.View> implemen
     }
 
     @Override
-    public void publishRecruit(HashMap<String, String> map) {
+    public void publishRecruit(HashMap<String, Object> map) {
         mRetrofitHelper.publishRecruit(map)
                 .compose(RxUtil.<ResponseBean>rxSchedulerHelper())
                 .subscribe(new Consumer<ResponseBean>() {

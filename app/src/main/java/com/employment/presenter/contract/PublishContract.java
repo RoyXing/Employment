@@ -21,7 +21,7 @@ public interface PublishContract {
 
     interface Presenter extends BasePresenter<View> {
 
-        void publishRecruit(HashMap<String, String> map);
+        void publishRecruit(HashMap<String, Object> map);
 
         void chooseTime(Date date, int type);
     }

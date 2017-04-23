@@ -22,7 +22,7 @@ public class Resume {
     private int iid;
     private String iaddress;
     private String itype;
-    private long itime;
+    private String itime;
     private int isuccess;
     private int istate;
     private Object cmStudentBySid;
@@ -54,11 +54,11 @@ public class Resume {
         this.itype = itype;
     }
 
-    public long getItime() {
+    public String getItime() {
         return itime;
     }
 
-    public void setItime(long itime) {
+    public void setItime(String itime) {
         this.itime = itime;
     }
 

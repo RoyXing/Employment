@@ -31,12 +31,13 @@ public class Recruit implements Serializable{
     private int rid;
     private Object rsex;
     private int rsalary;
-    private long rstart;
-    private long rend;
+    private String rstart;
+    private String rend;
     private int rnum;
     private String rinfo;
     private int rstate;
     private int rtype;
+    private String rjobName;
     private Object cmIntersByRid;
     private Job cmJobByJid;
     private CompanyInfo cmCompanyByCid;
@@ -66,19 +67,19 @@ public class Recruit implements Serializable{
         this.rsalary = rsalary;
     }
 
-    public long getRstart() {
+    public String getRstart() {
         return rstart;
     }
 
-    public void setRstart(long rstart) {
+    public void setRstart(String rstart) {
         this.rstart = rstart;
     }
 
-    public long getRend() {
+    public String getRend() {
         return rend;
     }
 
-    public void setRend(long rend) {
+    public void setRend(String rend) {
         this.rend = rend;
     }
 
@@ -146,4 +147,11 @@ public class Recruit implements Serializable{
         this.cmAreaByAid = cmAreaByAid;
     }
 
+    public String getRjobName() {
+        return rjobName;
+    }
+
+    public void setRjobName(String rjobName) {
+        this.rjobName = rjobName;
+    }
 }

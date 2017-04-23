@@ -22,7 +22,7 @@ import io.reactivex.functions.Consumer;
 public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implements WelcomeContract.Presenter {
 
     private RetrofitHelper mRetrofitHelper;
-    private static final int COUNT_DOWN_TIME = 2200;
+    private static final int COUNT_DOWN_TIME = 2000;
 
     @Inject
     public WelcomePresenter(RetrofitHelper mRetrofitHelper) {

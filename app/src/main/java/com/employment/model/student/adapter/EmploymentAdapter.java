@@ -48,8 +48,8 @@ public class EmploymentAdapter extends RecyclerView.Adapter<EmploymentAdapter.My
     public void onBindViewHolder(final MyViewHolder holder, int position) {
 
         Recruit recruit = recruits.get(position);
-        holder.employmentPosition.setText(recruit.getCmJobByJid().getJname());
-        holder.employmentCompanyName.setText(recruit.getCmCompanyByCid().getCname() + "");
+        holder.employmentPosition.setText(recruit.getRjobName()+"");
+        holder.employmentCompanyName.setText(recruit.getRjobName() + "");
         holder.employmentAddress.setText(recruit.getCmCompanyByCid().getCaddress() + "");
         holder.employmentSalary.setText(recruit.getRsalary() + "元");
         Glide.with(mContext).load(recruit.getCmCompanyByCid().getCface()).into(holder.companyChrImage);

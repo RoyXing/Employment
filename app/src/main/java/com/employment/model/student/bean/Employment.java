@@ -22,7 +22,7 @@ public class Employment {
      */
 
     private int eid;
-    private long etime;
+    private String etime;
     private int esalary;
     private String einfo;
     private int estate;
@@ -42,11 +42,11 @@ public class Employment {
         this.eid = eid;
     }
 
-    public long getEtime() {
+    public String getEtime() {
         return etime;
     }
 
-    public void setEtime(long etime) {
+    public void setEtime(String etime) {
         this.etime = etime;
     }
 

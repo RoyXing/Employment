@@ -124,7 +124,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="启始时间:" />
+                        android:text="发布时间:" />
 
                     <TextView
                         android:id="@+id/recruit_position_startTime"

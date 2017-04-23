@@ -40,7 +40,7 @@ public class CompanyInfo extends RealmObject implements Serializable {
     private String cinfo;
     private String cmark;
     private String caddress;
-    private long ctime;
+    private String ctime;
     private int cstate;
     private String ctype;
 
@@ -124,11 +124,11 @@ public class CompanyInfo extends RealmObject implements Serializable {
         this.caddress = caddress;
     }
 
-    public long getCtime() {
+    public String getCtime() {
         return ctime;
     }
 
-    public void setCtime(long ctime) {
+    public void setCtime(String ctime) {
         this.ctime = ctime;
     }
 

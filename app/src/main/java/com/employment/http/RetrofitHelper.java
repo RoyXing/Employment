@@ -95,6 +95,9 @@ public class RetrofitHelper {
         return studentApi.commitEmploymentInfo(map);
     }
 
+    public Observable<ResponseBean> commitStudentInfo(HashMap<String, String> map) {
+        return studentApi.commitStudentInfo(map);
+    }
 
     public Observable<List<Department>> getAllDepartment() {
         return companyApi.getAllDepartment();
@@ -108,7 +111,7 @@ public class RetrofitHelper {
         return companyApi.getAllInterview(companyId);
     }
 
-    public Observable<ResponseBean> publishRecruit(HashMap<String, String> map) {
+    public Observable<ResponseBean> publishRecruit(HashMap<String, Object> map) {
         return companyApi.publishRecruit(map);
     }
 }

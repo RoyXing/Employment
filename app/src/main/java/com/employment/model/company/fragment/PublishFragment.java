@@ -95,7 +95,7 @@ public class PublishFragment extends BaseFragment<PublishPresenter> implements P
 
     @Override
     public void publishSuccess() {
-        SystemUtils.showToast(mContext,"发布成功！");
+        SystemUtils.showToast(mContext, "发布成功！");
     }
 
     @OnClick({R.id.recruit_position_startTime, R.id.recruit_position_endTime, R.id.publish_recruit})
@@ -111,15 +111,21 @@ public class PublishFragment extends BaseFragment<PublishPresenter> implements P
                         toString()), 1);
                 break;
             case R.id.publish_recruit:
-                HashMap<String, String> map = new HashMap<>();
-                map.put("ejob_name", recruitPositionName.getText().toString());
-                map.put("rsex", sex);
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("rjobName", recruitPositionName.getText().toString());
+                if (sex.equals("男"))
+                    map.put("rsex", true);
+                else if (sex.equals("女"))
+                    map.put("rsex", false);
                 map.put("rnum", recruitPositionNumber.getText().toString());
                 map.put("rstart", recruitPositionStartTime.getText().toString());
-                map.put("rend", recruitPositionEndTime.toString());
-                map.put("rtype", type);
+                map.put("rend", recruitPositionEndTime.getText().toString());
+                if (type.equals("直聘"))
+                    map.put("rtype", 1);
+                else if (type.equals("校招"))
+                    map.put("rtype", 0);
                 map.put("rsalary", recruitPositionSalary.getText().toString());
-                map.put("rsalary", recruitPositionRequire.getText().toString());
+                map.put("rinfo", recruitPositionRequire.getText().toString());
                 map.put("companyId", App.getAppComponent().realmHelper().getCompanyInfoBean().getCid() + "");
                 mPresenter.publishRecruit(map);
                 break;

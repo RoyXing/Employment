@@ -145,7 +145,7 @@ public class RealmHelper {
         });
     }
 
-    public void setCompanyBuildTile(final long time) {
+    public void setCompanyBuildTile(final String time) {
         mRealm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {

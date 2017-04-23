@@ -55,4 +55,7 @@ public interface StudentApi {
 
     @POST("student/changeGraduateInfo")
     Observable<ResponseBean> commitEmploymentInfo(@QueryMap HashMap<String, String> map);
+
+    @POST("student/updateStudentInfo")
+    Observable<ResponseBean> commitStudentInfo(@QueryMap HashMap<String, String> map);
 }

@@ -3,6 +3,7 @@ package com.employment.presenter;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,9 @@ import com.employment.base.RxPresenter;
 import com.employment.base.RxUtil;
 import com.employment.db.RealmHelper;
 import com.employment.http.RetrofitHelper;
+import com.employment.http.bean.ResponseBean;
 import com.employment.model.student.bean.Employment;
+import com.employment.model.student.bean.StudentInfo;
 import com.employment.model.student.bean.UnEmployment;
 import com.employment.model.student.event.EmploymentEvent;
 import com.employment.presenter.contract.PersonalContract;
@@ -35,6 +38,7 @@ import javax.inject.Inject;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+
 
 /**
  * Created by roy on 2017/4/9.
@@ -202,6 +206,32 @@ public class PersonalPresenter extends RxPresenter<PersonalContract.View> implem
         popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
     }
 
+    @Override
+    public void commitStudentInfo() {
+        HashMap<String, String> map = new HashMap<>();
+        StudentInfo bean = realmHelper.getStudentInfoBean();
+        map.put("studentId", bean.getSid() + "");
+        map.put("sbirth", SystemUtils.formatTime(bean.getSbirth()));
+        map.put("sphone", bean.getSphone() + "");
+        map.put("semail", bean.getSemail() + "");
+        map.put("sdetail", bean.getSdetail() + "");
+        Disposable disposable = mRetrofitHelper.commitStudentInfo(map)
+                .compose(RxUtil.<ResponseBean>rxSchedulerHelper())
+                .subscribe(new Consumer<ResponseBean>() {
+                    @Override
+                    public void accept(@NonNull ResponseBean responseBean) throws Exception {
+                        if (responseBean.getCode() == 200) {
+                            Log.e("roy", "学生信息修改成功");
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(@NonNull Throwable throwable) throws Exception {
+                        Log.e("roy", "学生信息修改失败");
+                    }
+                });
+        addSubscribe(disposable);
+    }
 
     /**
      * 设置添加屏幕的背景透明度

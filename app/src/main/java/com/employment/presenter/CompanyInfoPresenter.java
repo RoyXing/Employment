@@ -68,7 +68,7 @@ public class CompanyInfoPresenter extends RxPresenter<CompanyInfoContract.View> 
                 Calendar instance = Calendar.getInstance();
                 instance.set(i, i1, i2);
                 Date newDate = instance.getTime();
-                realmHelper.setCompanyBuildTile(newDate.getTime());
+                realmHelper.setCompanyBuildTile(SystemUtils.formatTime(newDate));
                 mView.showBuildTime(SystemUtils.formatTime(newDate));
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
@@ -139,7 +139,7 @@ public class CompanyInfoPresenter extends RxPresenter<CompanyInfoContract.View> 
         HashMap<String, String> map = new HashMap<>();
         map.put("companyId", realmHelper.getCompanyInfoBean().getCid() + "");
         map.put("caddress", realmHelper.getCompanyInfoBean().getCaddress());
-//        map.put("ctime", realmHelper.getCompanyInfoBean().getCtime() + "");
+        map.put("ctime", realmHelper.getCompanyInfoBean().getCtime());
         map.put("cphone", realmHelper.getCompanyInfoBean().getCphone());
         map.put("cemail", realmHelper.getCompanyInfoBean().getCemail());
         map.put("chr", realmHelper.getCompanyInfoBean().getChr());
