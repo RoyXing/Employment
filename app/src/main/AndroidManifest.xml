@@ -40,6 +40,7 @@
             android:launchMode="singleTask" />
 
         <activity android:name=".model.student.activity.PersonalActivity" />
+        <activity android:name=".model.company.activity.CheckResumeDetail" />
 
     </application>
 

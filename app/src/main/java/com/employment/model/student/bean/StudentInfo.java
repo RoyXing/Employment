@@ -2,6 +2,7 @@ package com.employment.model.student.bean;
 
 import com.employment.model.admin.bean.Department;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -11,7 +12,7 @@ import io.realm.annotations.PrimaryKey;
  * Created by roy on 2017/4/8.
  */
 
-public class StudentInfo extends RealmObject {
+public class StudentInfo extends RealmObject implements Serializable{
 
     /**
      * sid : 2
