@@ -18,6 +18,7 @@ import com.employment.model.student.bean.UnEmployment;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observable;
 
@@ -113,5 +114,13 @@ public class RetrofitHelper {
 
     public Observable<ResponseBean> publishRecruit(HashMap<String, Object> map) {
         return companyApi.publishRecruit(map);
+    }
+
+    public Observable<List<Recruit>> selectRecruitment(String type) {
+        return adminApi.adminSelectRecruitment(type);
+    }
+
+    public Observable<ResponseBean> RecruitmentState(Map<String ,String>map) {
+        return adminApi.RecruitmentState(map);
     }
 }

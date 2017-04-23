@@ -25,8 +25,9 @@ public class CheckHomeFragment extends SimpleBaseFragment {
     @BindView(R.id.vp_employment_main)
     ViewPager vpEmploymentMain;
 
-    public static String[] type = {"已审核", "待审核"};
-    public static String[] typeApi = {"0", "1"};
+    public static String[] type = {"待审核", "已审核", "未通过"};
+
+    public static String[] typeApi = {"2", "0", "1"};
     List<CheckRecruitmentFragment> fragments = new ArrayList<>();
 
 
