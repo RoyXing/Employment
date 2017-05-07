@@ -38,10 +38,7 @@ public interface ActivityComponent {
     void inject(NoteActivity noteActivity);
 
     void inject(PersonalActivity personalActivity);
-<<<<<<< HEAD
     void inject(CheckEmploymentDetailActivity checkEmploymentDetailActivity);
-=======
 
     void inject(CheckResumeDetail checkResumeDetail);
->>>>>>> ff4d0bb4a42d7e655be261f2d455f0e40b136bf8
 }

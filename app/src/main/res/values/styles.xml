@@ -48,6 +48,10 @@
         <item name="android:maxLines">1</item>
         <item name="android:singleLine">true</item>
     </style>
-
+    <style name="communication">
+        <item name="android:background">@drawable/write_communication</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
 
 </resources>
