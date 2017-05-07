@@ -48,7 +48,6 @@
 
         <activity android:name=".model.company.activity.CheckResumeDetail" />
 
-
     </application>
 
 </manifest>

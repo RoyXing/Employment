@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.employment.R;
+import com.employment.app.App;
 import com.employment.base.BaseActivity;
 import com.employment.presenter.LoginPresenter;
 import com.employment.presenter.contract.LoginContract;

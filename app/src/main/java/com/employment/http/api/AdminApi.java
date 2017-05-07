@@ -3,7 +3,10 @@ package com.employment.http.api;
 import com.employment.http.bean.ResponseBean;
 import com.employment.model.admin.bean.AdminInfo;
 import com.employment.http.bean.WelcomeBean;
+import com.employment.model.student.bean.Employment;
 import com.employment.model.student.bean.Recruit;
+import com.employment.model.student.bean.StudentInfo;
+import com.employment.model.student.bean.UnEmployment;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,4 +37,12 @@ public interface AdminApi {
     @POST("recruit/verify")
     Observable<ResponseBean> RecruitmentState(@QueryMap Map<String, String> map);
 
+    @GET("student/getAllStudent")
+    Observable<List<StudentInfo>> getAllStudentInfo();
+
+    @GET("department/getUnemp")
+    Observable<List<UnEmployment>> getUnEmploymentByDepartment(@Query("departmentId") String departmentId);
+
+    @GET("emp/findAllUnemp")
+    Observable<List<UnEmployment>> getAllUnEmployment();
 }

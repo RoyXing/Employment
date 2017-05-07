@@ -96,7 +96,7 @@ public class RetrofitHelper {
         return studentApi.commitEmploymentInfo(map);
     }
 
-    public Observable<ResponseBean> commitUnEmploymentInfo(HashMap<String, String> map){
+    public Observable<ResponseBean> commitUnEmploymentInfo(HashMap<String, String> map) {
         return studentApi.commitUnEmploymentInfo(map);
     }
 
@@ -126,11 +126,24 @@ public class RetrofitHelper {
         return adminApi.adminSelectRecruitment(type);
     }
 
-    public Observable<ResponseBean> RecruitmentState(Map<String ,String>map) {
+    public Observable<ResponseBean> RecruitmentState(Map<String, String> map) {
         return adminApi.RecruitmentState(map);
-
-    public Observable<ResponseBean> commitInterviewInfo(HashMap<String, String> map){
-        return companyApi.commitInterviewInfo(map);
-
     }
+
+    public Observable<ResponseBean> commitInterviewInfo(HashMap<String, String> map) {
+        return companyApi.commitInterviewInfo(map);
+    }
+
+    public Observable<List<UnEmployment>> getUnEmploymentByDepartment(String departmentId) {
+        return adminApi.getUnEmploymentByDepartment(departmentId);
+    }
+
+    public Observable<List<UnEmployment>> getAllUnEmployment() {
+        return adminApi.getAllUnEmployment();
+    }
+
+    public Observable<List<StudentInfo>> getAllStudentInfo() {
+        return adminApi.getAllStudentInfo();
+    }
+
 }
