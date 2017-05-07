@@ -22,6 +22,9 @@ import com.employment.model.student.activity.WriteCommunicationActivity;
 import com.employment.model.student.adapter.CommunicationAdapter;
 import com.employment.model.student.bean.JsonToBean;
 import com.employment.model.student.bean.TopicBean;
+import com.employment.utils.JsonResultR;
+import com.employment.utils.JsonUtils;
+import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -174,24 +177,42 @@ public class CommunicationFragment extends Fragment implements CommunicationAdap
                         @Override
                         public void onResponse(String response, int id) {
                             try {
-                                JSONObject jsonObject = new JSONObject(response);
-                                if (jsonObject.optInt("code") == 10000) {
-                                    List<TopicBean> topicBeanList = JsonToBean.getBeans(jsonObject.opt("response").toString(), TopicBean.class);
+//                                JSONObject jsonObject = new JSONObject(response);
+                                JsonResultR<List<TopicBean>> resultR = JsonUtils.getObject(response, new TypeToken<JsonResultR<List<TopicBean>>>() {
+                                }.getType());
+                                if (resultR.getCode() == 10000) {
                                     listView.removeFooterView(footview);
                                     if (page == 0)
                                         list.clear();
-                                    if (topicBeanList.size() >= 10) {
+                                    if (resultR.getResponse().size() >= 10) {
                                         page++;
                                         listView.addFooterView(footview);
                                     } else {
                                         listView.removeFooterView(footview);
                                     }
-                                    list.addAll(topicBeanList);
+                                    list.addAll(resultR.getResponse());
                                     adapter.notifyDataSetChanged();
-                                    if (topicBeanList != null && topicBeanList.size() == 0) {
+                                    if (resultR.getResponse() != null && resultR.getResponse().size() == 0) {
                                         Toast.makeText(getActivity(), "没有帖子", Toast.LENGTH_SHORT).show();
                                     }
                                 }
+//                                if (jsonObject.optInt("code") == 10000) {
+//                                    List<TopicBean> topicBeanList = JsonToBean.getBeans(jsonObject.opt("response").toString(), TopicBean.class);
+//                                    listView.removeFooterView(footview);
+//                                    if (page == 0)
+//                                        list.clear();
+//                                    if (topicBeanList.size() >= 10) {
+//                                        page++;
+//                                        listView.addFooterView(footview);
+//                                    } else {
+//                                        listView.removeFooterView(footview);
+//                                    }
+//                                    list.addAll(topicBeanList);
+//                                    adapter.notifyDataSetChanged();
+//                                    if (topicBeanList != null && topicBeanList.size() == 0) {
+//                                        Toast.makeText(getActivity(), "没有帖子", Toast.LENGTH_SHORT).show();
+//                                    }
+//                                }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

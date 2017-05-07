@@ -2,9 +2,11 @@ package com.employment.model.admin.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.employment.R;
 import com.employment.app.Constants;
@@ -44,6 +46,12 @@ public class CheckPostFragment extends BaseFragment<CheckPostPresenter> implemen
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_check_post;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initEventAndData();
     }
 
     @Override

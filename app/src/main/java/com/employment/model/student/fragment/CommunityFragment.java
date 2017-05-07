@@ -2,9 +2,11 @@ package com.employment.model.student.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.employment.R;
 import com.employment.app.Constants;
@@ -39,6 +41,12 @@ public class CommunityFragment extends BaseFragment<CommunityPresenter> implemen
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_community;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initEventAndData();
     }
 
     @Override

@@ -78,7 +78,7 @@ public class CommunicationAdapter extends ArrayAdapter<TopicBean> {
         holder.articleContent.setText(list.get(position).getContent());
         holder.articleCommit.setText("评论数：" + list.get(position).getCommentNum());
         holder.articleTime.setText(TimeUtils.longToString(list.get(position).getCreateTime()) + "");
-        Picasso.with(context).load(Constants.HOST + "/" + list.get(position).getIcon()).placeholder(R.drawable.icon).error(R.drawable.icon).into(holder.userImg);
+        Picasso.with(context).load( list.get(position).getIcon()).placeholder(R.drawable.icon).error(R.drawable.icon).into(holder.userImg);
 
         holder.btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +90,7 @@ public class CommunicationAdapter extends ArrayAdapter<TopicBean> {
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                delete(list.get(position).getId(), position);
+                delete(list.get(position).getTopicId(), position);
                 Toast.makeText(context, "正在请求", Toast.LENGTH_SHORT).show();
             }
         });
@@ -114,7 +114,7 @@ public class CommunicationAdapter extends ArrayAdapter<TopicBean> {
         public LinearLayout linearLayout;
     }
 
-    private void CheckCommunication(String id,final int pio) {
+    private void CheckCommunication(String id, final int pio) {
         OkHttpUtils
                 .post()
                 .url(Constants.PASS)
