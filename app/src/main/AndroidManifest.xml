@@ -47,6 +47,8 @@
             android:theme="@style/Theme.DesignDemo" />
 
         <activity android:name=".model.company.activity.CheckResumeDetail" />
+        <activity android:name=".model.student.activity.CommunicationDatialsActivity" />
+        <activity android:name=".model.student.activity.WriteCommunicationActivity" />
 
     </application>
 
