@@ -145,7 +145,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         data.setValueTextColor(Color.WHITE);
         mPieChart.setData(data);
         mPieChart.highlightValues(null);
-        des.setTextSize(Utils.convertDpToPixel(12.0F));
+        des.setTextSize(16);
         mPieChart.setDescription(des);
 
         //刷新
